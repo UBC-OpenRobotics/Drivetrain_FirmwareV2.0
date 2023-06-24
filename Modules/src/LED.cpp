@@ -18,12 +18,12 @@ namespace STM32LED
     {
         if (s == state::on)
         {
-            LED_state = state::on;
+            this->LED_state = state::on;
             HAL_GPIO_WritePin(gpio_port, gpio_pin, GPIO_PIN_SET);    //turn on the LED
         }
         else if (s == state::off)
         {
-            LED_state = state::off;
+            this->LED_state = state::off;
             HAL_GPIO_WritePin(gpio_port, gpio_pin, GPIO_PIN_RESET);  //turn off the LED
         }
         return;

@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccjmRpBn.s 			page 1
+ARM GAS  /tmp/ccG44j8D.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccjmRpBn.s 			page 1
   43              		.loc 1 13 25 is_stmt 0 view .LVU6
   44 0004 0122     		movs	r2, #1
   45              	.LVL1:
-ARM GAS  /tmp/ccjmRpBn.s 			page 2
+ARM GAS  /tmp/ccG44j8D.s 			page 2
 
 
   46              		.loc 1 13 25 view .LVU7
@@ -103,7 +103,7 @@ ARM GAS  /tmp/ccjmRpBn.s 			page 1
   81              		.loc 1 19 9 is_stmt 1 view .LVU11
   82 0002 11B1     		cbz	r1, .L6
   20:Modules/src/LED.cpp ****         {
-  21:Modules/src/LED.cpp ****             LED_state = state::on;
+  21:Modules/src/LED.cpp ****             this->LED_state = state::on;
   22:Modules/src/LED.cpp ****             HAL_GPIO_WritePin(gpio_port, gpio_pin, GPIO_PIN_SET);    //turn on the LED
   23:Modules/src/LED.cpp ****         }
   24:Modules/src/LED.cpp ****         else if (s == state::off)
@@ -113,12 +113,12 @@ ARM GAS  /tmp/ccjmRpBn.s 			page 1
   86              	.LVL3:
   87              	.L2:
   25:Modules/src/LED.cpp ****         {
-  26:Modules/src/LED.cpp ****             LED_state = state::off;
+  26:Modules/src/LED.cpp ****             this->LED_state = state::off;
   27:Modules/src/LED.cpp ****             HAL_GPIO_WritePin(gpio_port, gpio_pin, GPIO_PIN_RESET);  //turn off the LED
   28:Modules/src/LED.cpp ****         }
   29:Modules/src/LED.cpp ****         return;
   30:Modules/src/LED.cpp ****     }
-ARM GAS  /tmp/ccjmRpBn.s 			page 3
+ARM GAS  /tmp/ccG44j8D.s 			page 3
 
 
   88              		.loc 1 30 5 is_stmt 0 view .LVU13
@@ -128,7 +128,7 @@ ARM GAS  /tmp/ccjmRpBn.s 			page 1
   21:Modules/src/LED.cpp ****             HAL_GPIO_WritePin(gpio_port, gpio_pin, GPIO_PIN_SET);    //turn on the LED
   92              		.loc 1 21 13 is_stmt 1 view .LVU14
   21:Modules/src/LED.cpp ****             HAL_GPIO_WritePin(gpio_port, gpio_pin, GPIO_PIN_SET);    //turn on the LED
-  93              		.loc 1 21 23 is_stmt 0 view .LVU15
+  93              		.loc 1 21 29 is_stmt 0 view .LVU15
   94 000a 0023     		movs	r3, #0
   95 000c 0360     		str	r3, [r0]
   22:Modules/src/LED.cpp ****         }
@@ -152,7 +152,7 @@ ARM GAS  /tmp/ccjmRpBn.s 			page 1
   26:Modules/src/LED.cpp ****             HAL_GPIO_WritePin(gpio_port, gpio_pin, GPIO_PIN_RESET);  //turn off the LED
  110              		.loc 1 26 13 is_stmt 1 view .LVU20
   26:Modules/src/LED.cpp ****             HAL_GPIO_WritePin(gpio_port, gpio_pin, GPIO_PIN_RESET);  //turn off the LED
- 111              		.loc 1 26 23 is_stmt 0 view .LVU21
+ 111              		.loc 1 26 29 is_stmt 0 view .LVU21
  112 001a 0160     		str	r1, [r0]
   27:Modules/src/LED.cpp ****         }
  113              		.loc 1 27 13 is_stmt 1 view .LVU22
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccjmRpBn.s 			page 1
  130              		.section	.text._ZN8STM32LED3LED6toggleEv,"ax",%progbits
  131              		.align	1
  132              		.global	_ZN8STM32LED3LED6toggleEv
-ARM GAS  /tmp/ccjmRpBn.s 			page 4
+ARM GAS  /tmp/ccG44j8D.s 			page 4
 
 
  133              		.syntax unified
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccjmRpBn.s 			page 1
  169              		.loc 1 43 16 is_stmt 0 view .LVU36
  170 000e 0021     		movs	r1, #0
  171 0010 FFF7FEFF 		bl	_ZN8STM32LED3LED3setENS_5stateE
-ARM GAS  /tmp/ccjmRpBn.s 			page 5
+ARM GAS  /tmp/ccG44j8D.s 			page 5
 
 
  172              	.LVL15:
@@ -279,27 +279,27 @@ ARM GAS  /tmp/ccjmRpBn.s 			page 1
  211              		.file 18 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
  212              		.file 19 "Modules/inc/LED.h"
  213              		.file 20 "<built-in>"
-ARM GAS  /tmp/ccjmRpBn.s 			page 6
+ARM GAS  /tmp/ccG44j8D.s 			page 6
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 LED.cpp
-     /tmp/ccjmRpBn.s:17     .text._ZN8STM32LED3LEDC2EP12GPIO_TypeDeft:0000000000000000 $t
-     /tmp/ccjmRpBn.s:25     .text._ZN8STM32LED3LEDC2EP12GPIO_TypeDeft:0000000000000000 _ZN8STM32LED3LEDC2EP12GPIO_TypeDeft
+     /tmp/ccG44j8D.s:17     .text._ZN8STM32LED3LEDC2EP12GPIO_TypeDeft:0000000000000000 $t
+     /tmp/ccG44j8D.s:25     .text._ZN8STM32LED3LEDC2EP12GPIO_TypeDeft:0000000000000000 _ZN8STM32LED3LEDC2EP12GPIO_TypeDeft
 .ARM.exidx.text._ZN8STM32LED3LEDC2EP12GPIO_TypeDeft:0000000000000000 $d
-     /tmp/ccjmRpBn.s:25     .text._ZN8STM32LED3LEDC2EP12GPIO_TypeDeft:0000000000000000 _ZN8STM32LED3LEDC1EP12GPIO_TypeDeft
-     /tmp/ccjmRpBn.s:59     .text._ZN8STM32LED3LED3setENS_5stateE:0000000000000000 $t
-     /tmp/ccjmRpBn.s:66     .text._ZN8STM32LED3LED3setENS_5stateE:0000000000000000 _ZN8STM32LED3LED3setENS_5stateE
+     /tmp/ccG44j8D.s:25     .text._ZN8STM32LED3LEDC2EP12GPIO_TypeDeft:0000000000000000 _ZN8STM32LED3LEDC1EP12GPIO_TypeDeft
+     /tmp/ccG44j8D.s:59     .text._ZN8STM32LED3LED3setENS_5stateE:0000000000000000 $t
+     /tmp/ccG44j8D.s:66     .text._ZN8STM32LED3LED3setENS_5stateE:0000000000000000 _ZN8STM32LED3LED3setENS_5stateE
 .ARM.extab.text._ZN8STM32LED3LED3setENS_5stateE:0000000000000000 $d
 .ARM.exidx.text._ZN8STM32LED3LED3setENS_5stateE:0000000000000000 $d
-     /tmp/ccjmRpBn.s:131    .text._ZN8STM32LED3LED6toggleEv:0000000000000000 $t
-     /tmp/ccjmRpBn.s:138    .text._ZN8STM32LED3LED6toggleEv:0000000000000000 _ZN8STM32LED3LED6toggleEv
+     /tmp/ccG44j8D.s:131    .text._ZN8STM32LED3LED6toggleEv:0000000000000000 $t
+     /tmp/ccG44j8D.s:138    .text._ZN8STM32LED3LED6toggleEv:0000000000000000 _ZN8STM32LED3LED6toggleEv
 .ARM.extab.text._ZN8STM32LED3LED6toggleEv:0000000000000000 $d
 .ARM.exidx.text._ZN8STM32LED3LED6toggleEv:0000000000000000 $d
-     /tmp/ccjmRpBn.s:191    .bss._ZN8STM32LED4LED3E:0000000000000000 _ZN8STM32LED4LED3E
-     /tmp/ccjmRpBn.s:185    .bss._ZN8STM32LED4LED2E:0000000000000000 _ZN8STM32LED4LED2E
-     /tmp/ccjmRpBn.s:182    .bss._ZN8STM32LED4LED2E:0000000000000000 $d
-     /tmp/ccjmRpBn.s:188    .bss._ZN8STM32LED4LED3E:0000000000000000 $d
+     /tmp/ccG44j8D.s:191    .bss._ZN8STM32LED4LED3E:0000000000000000 _ZN8STM32LED4LED3E
+     /tmp/ccG44j8D.s:185    .bss._ZN8STM32LED4LED2E:0000000000000000 _ZN8STM32LED4LED2E
+     /tmp/ccG44j8D.s:182    .bss._ZN8STM32LED4LED2E:0000000000000000 $d
+     /tmp/ccG44j8D.s:188    .bss._ZN8STM32LED4LED3E:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin
