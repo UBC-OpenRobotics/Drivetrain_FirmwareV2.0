@@ -24,6 +24,7 @@ namespace STM32LED
             uint16_t gpio_pin;
     };
     
+    extern LED* LED1;
     extern LED* LED2;
     extern LED* LED3;
 }
