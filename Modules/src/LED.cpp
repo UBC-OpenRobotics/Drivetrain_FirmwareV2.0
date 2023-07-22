@@ -14,15 +14,15 @@ namespace STM32LED
         this->LED_state = state::off;   //default state is off
     }
 
-    void LED::toggle_callback() //toggle LED each time timer expired
+    void LED::toggle_callback(void* led) //toggle LED each time timer expired
     {   
-         STM32LED::toggle();
+        ((LED*) led) -> toggle((LED*)led);
     }
     //Call this function in main, and this function should also be inside the class.
 
     void LED::timer_init()
     {   //Do I need the LED:: thing here?
-        lED::blink_id = osTimerCreate (osTimer(periodic_blink), osTimerPeriodic, NULL);
+        this -> blink_id = osTimerNew(LED:: toggle_callback, osTimerPeriodic, (void*)this, NULL);
         if (LED::status != osOK)  {
                 // timer could not be started
             }
@@ -63,12 +63,12 @@ namespace STM32LED
         }
     }
     
-    void LED::toggle()
+    void LED::toggle(LED* led)
     {
         // this->LED_state = (this->LED_state == state::on) ? state::off : state::on;
-        if(this -> LED_state == state::on)    this->LED_state = state::off;
-        if(this -> LED_state == state::off)    this->LED_state = state::on;
-        HAL_GPIO_TogglePin(this->gpio_port, this->gpio_pin);
+        if(led -> LED_state == state::on)    led->LED_state = state::off;
+        if(led -> LED_state == state::off)   led->LED_state = state::on;
+        HAL_GPIO_TogglePin(led->gpio_port, led->gpio_pin);
     }
 
     //manipulates the states for all three LEDs at the same time

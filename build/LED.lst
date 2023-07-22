@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccjI9PYc.s 			page 1
+ARM GAS  /tmp/ccXwTnK3.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -27,254 +27,547 @@ ARM GAS  /tmp/ccjI9PYc.s 			page 1
   25              	_ZN8STM32LED3LEDC2EP12GPIO_TypeDeft:
   26              		.fnstart
   27              	.LVL0:
-  28              	.LFB1253:
+  28              	.LFB1257:
   29              		.file 1 "Modules/src/LED.cpp"
    1:Modules/src/LED.cpp **** #include "LED.h"
-   2:Modules/src/LED.cpp **** 
-   3:Modules/src/LED.cpp **** namespace STM32LED
-   4:Modules/src/LED.cpp **** {
-   5:Modules/src/LED.cpp ****     LED* LED1;
-   6:Modules/src/LED.cpp ****     LED* LED2;
-   7:Modules/src/LED.cpp ****     LED* LED3;
-   8:Modules/src/LED.cpp **** 
-   9:Modules/src/LED.cpp ****     LED::LED(GPIO_TypeDef* gpio_port, uint16_t gpio_pin)
-  30              		.loc 1 9 5 view -0
+   2:Modules/src/LED.cpp **** #include "cmsis_os.h"
+   3:Modules/src/LED.cpp **** 
+   4:Modules/src/LED.cpp **** namespace STM32LED
+   5:Modules/src/LED.cpp **** {
+   6:Modules/src/LED.cpp ****     LED* LED1;
+   7:Modules/src/LED.cpp ****     LED* LED2;
+   8:Modules/src/LED.cpp ****     LED* LED3;
+   9:Modules/src/LED.cpp **** 
+  10:Modules/src/LED.cpp ****     LED::LED(GPIO_TypeDef* gpio_port, uint16_t gpio_pin)
+  30              		.loc 1 10 5 view -0
   31              		.cfi_startproc
   32              		@ args = 0, pretend = 0, frame = 0
   33              		@ frame_needed = 0, uses_anonymous_args = 0
   34              		@ link register save eliminated.
   35              	.LBB2:
-  10:Modules/src/LED.cpp ****     {
-  11:Modules/src/LED.cpp ****         this->gpio_port = gpio_port;
-  36              		.loc 1 11 9 view .LVU1
-  37              		.loc 1 11 25 is_stmt 0 view .LVU2
-  38 0000 4160     		str	r1, [r0, #4]
-  12:Modules/src/LED.cpp ****         this->gpio_pin = gpio_pin;
-  39              		.loc 1 12 9 is_stmt 1 view .LVU3
-  40              		.loc 1 12 24 is_stmt 0 view .LVU4
-  41 0002 0281     		strh	r2, [r0, #8]	@ movhi
-  13:Modules/src/LED.cpp ****         this->LED_state = state::off;   //default state is off
-  42              		.loc 1 13 9 is_stmt 1 view .LVU5
-  43              		.loc 1 13 25 is_stmt 0 view .LVU6
+  11:Modules/src/LED.cpp ****     {
+  12:Modules/src/LED.cpp ****         this->gpio_port = gpio_port;
+  36              		.loc 1 12 9 view .LVU1
+  37              		.loc 1 12 25 is_stmt 0 view .LVU2
+  38 0000 C160     		str	r1, [r0, #12]
+  13:Modules/src/LED.cpp ****         this->gpio_pin = gpio_pin;
+  39              		.loc 1 13 9 is_stmt 1 view .LVU3
+  40              		.loc 1 13 24 is_stmt 0 view .LVU4
+  41 0002 0282     		strh	r2, [r0, #16]	@ movhi
+  14:Modules/src/LED.cpp ****         this->LED_state = state::off;   //default state is off
+  42              		.loc 1 14 9 is_stmt 1 view .LVU5
+  43              		.loc 1 14 25 is_stmt 0 view .LVU6
   44 0004 0122     		movs	r2, #1
+ARM GAS  /tmp/ccXwTnK3.s 			page 2
+
+
   45              	.LVL1:
-ARM GAS  /tmp/ccjI9PYc.s 			page 2
-
-
-  46              		.loc 1 13 25 view .LVU7
-  47 0006 0260     		str	r2, [r0]
+  46              		.loc 1 14 25 view .LVU7
+  47 0006 8260     		str	r2, [r0, #8]
   48              	.LBE2:
-  14:Modules/src/LED.cpp ****     }
-  49              		.loc 1 14 5 view .LVU8
+  15:Modules/src/LED.cpp ****     }
+  49              		.loc 1 15 5 view .LVU8
   50 0008 7047     		bx	lr
   51              		.cfi_endproc
-  52              	.LFE1253:
+  52              	.LFE1257:
   53              		.cantunwind
   54              		.fnend
   56              		.global	_ZN8STM32LED3LEDC1EP12GPIO_TypeDeft
   57              		.thumb_set _ZN8STM32LED3LEDC1EP12GPIO_TypeDeft,_ZN8STM32LED3LEDC2EP12GPIO_TypeDeft
-  58              		.section	.text._ZN8STM32LED3LED3setENS_5stateE,"ax",%progbits
+  58              		.section	.text._ZN8STM32LED3LED10timer_initEv,"ax",%progbits
   59              		.align	1
-  60              		.global	_ZN8STM32LED3LED3setENS_5stateE
+  60              		.global	_ZN8STM32LED3LED10timer_initEv
   61              		.syntax unified
   62              		.thumb
   63              		.thumb_func
   64              		.fpu fpv5-d16
-  66              	_ZN8STM32LED3LED3setENS_5stateE:
+  66              	_ZN8STM32LED3LED10timer_initEv:
   67              		.fnstart
   68              	.LVL2:
-  69              	.LFB1255:
-  15:Modules/src/LED.cpp **** 
-  16:Modules/src/LED.cpp ****     void LED::set(state s)
-  17:Modules/src/LED.cpp ****     {
-  70              		.loc 1 17 5 is_stmt 1 view -0
+  69              	.LFB1260:
+  16:Modules/src/LED.cpp **** 
+  17:Modules/src/LED.cpp ****     void LED::toggle_callback(void* led) //toggle LED each time timer expired
+  18:Modules/src/LED.cpp ****     {   
+  19:Modules/src/LED.cpp ****         LED::toggle((LED*)led);
+  20:Modules/src/LED.cpp ****     }
+  21:Modules/src/LED.cpp ****     //Call this function in main, and this function should also be inside the class.
+  22:Modules/src/LED.cpp **** 
+  23:Modules/src/LED.cpp ****     void LED::timer_init()
+  24:Modules/src/LED.cpp ****     {   //Do I need the LED:: thing here?
+  70              		.loc 1 24 5 is_stmt 1 view -0
   71              		.cfi_startproc
   72              		@ args = 0, pretend = 0, frame = 0
   73              		@ frame_needed = 0, uses_anonymous_args = 0
-  74              		.loc 1 17 5 is_stmt 0 view .LVU10
-  75 0000 08B5     		push	{r3, lr}
-  76              		.save {r3, lr}
+  74              		.loc 1 24 5 is_stmt 0 view .LVU10
+  75 0000 10B5     		push	{r4, lr}
+  76              		.save {r4, lr}
   77              	.LCFI0:
   78              		.cfi_def_cfa_offset 8
-  79              		.cfi_offset 3, -8
+  79              		.cfi_offset 4, -8
   80              		.cfi_offset 14, -4
-  18:Modules/src/LED.cpp ****         this->LED_state = s;
-  81              		.loc 1 18 9 is_stmt 1 view .LVU11
-  82              		.loc 1 18 25 is_stmt 0 view .LVU12
-  83 0002 0160     		str	r1, [r0]
-  19:Modules/src/LED.cpp ****         if(s == state::on)
-  84              		.loc 1 19 9 is_stmt 1 view .LVU13
-  85 0004 29B9     		cbnz	r1, .L3
-  20:Modules/src/LED.cpp ****         {
-  21:Modules/src/LED.cpp ****             HAL_GPIO_WritePin(this->gpio_port, this->gpio_pin, GPIO_PIN_SET);
-  86              		.loc 1 21 13 view .LVU14
-  87              		.loc 1 21 30 is_stmt 0 view .LVU15
-  88 0006 0122     		movs	r2, #1
-  89 0008 0189     		ldrh	r1, [r0, #8]
-  90              	.LVL3:
-  91              		.loc 1 21 30 view .LVU16
-  92 000a 4068     		ldr	r0, [r0, #4]
-  93              	.LVL4:
-  94              		.loc 1 21 30 view .LVU17
-  95 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
-  96              	.LVL5:
-ARM GAS  /tmp/ccjI9PYc.s 			page 3
+  81 0002 0446     		mov	r4, r0
+  25:Modules/src/LED.cpp ****         this -> blink_id = osTimerNew(LED:: toggle_callback, osTimerPeriodic, (void*)this, NULL);
+  82              		.loc 1 25 9 is_stmt 1 view .LVU11
+  83              		.loc 1 25 38 is_stmt 0 view .LVU12
+  84 0004 0023     		movs	r3, #0
+  85 0006 0246     		mov	r2, r0
+  86 0008 0121     		movs	r1, #1
+  87 000a 0248     		ldr	r0, .L4
+  88              	.LVL3:
+  89              		.loc 1 25 38 view .LVU13
+  90 000c FFF7FEFF 		bl	osTimerNew
+  91              	.LVL4:
+  92              		.loc 1 25 26 view .LVU14
+ARM GAS  /tmp/ccXwTnK3.s 			page 3
 
 
-  97              	.L2:
-  22:Modules/src/LED.cpp ****         }
-  23:Modules/src/LED.cpp ****         else
-  24:Modules/src/LED.cpp ****         {
-  25:Modules/src/LED.cpp ****             HAL_GPIO_WritePin(this->gpio_port, this->gpio_pin, GPIO_PIN_RESET);
-  26:Modules/src/LED.cpp ****         }
-  27:Modules/src/LED.cpp ****     }
-  98              		.loc 1 27 5 view .LVU18
-  99 0010 08BD     		pop	{r3, pc}
- 100              	.LVL6:
- 101              	.L3:
-  25:Modules/src/LED.cpp ****         }
- 102              		.loc 1 25 13 is_stmt 1 view .LVU19
-  25:Modules/src/LED.cpp ****         }
- 103              		.loc 1 25 30 is_stmt 0 view .LVU20
- 104 0012 0022     		movs	r2, #0
- 105 0014 0189     		ldrh	r1, [r0, #8]
- 106              	.LVL7:
-  25:Modules/src/LED.cpp ****         }
- 107              		.loc 1 25 30 view .LVU21
- 108 0016 4068     		ldr	r0, [r0, #4]
- 109              	.LVL8:
-  25:Modules/src/LED.cpp ****         }
- 110              		.loc 1 25 30 view .LVU22
- 111 0018 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 112              	.LVL9:
- 113              		.loc 1 27 5 view .LVU23
- 114 001c F8E7     		b	.L2
- 115              		.cfi_endproc
- 116              	.LFE1255:
- 117              		.fnend
- 119              		.section	.text._ZN8STM32LED3LED6toggleEv,"ax",%progbits
- 120              		.align	1
- 121              		.global	_ZN8STM32LED3LED6toggleEv
- 122              		.syntax unified
- 123              		.thumb
- 124              		.thumb_func
- 125              		.fpu fpv5-d16
- 127              	_ZN8STM32LED3LED6toggleEv:
- 128              		.fnstart
- 129              	.LVL10:
- 130              	.LFB1256:
-  28:Modules/src/LED.cpp **** 
-  29:Modules/src/LED.cpp ****     void LED::toggle()
-  30:Modules/src/LED.cpp ****     {
- 131              		.loc 1 30 5 is_stmt 1 view -0
- 132              		.cfi_startproc
- 133              		@ args = 0, pretend = 0, frame = 0
- 134              		@ frame_needed = 0, uses_anonymous_args = 0
- 135              		.loc 1 30 5 is_stmt 0 view .LVU25
- 136 0000 08B5     		push	{r3, lr}
- 137              		.save {r3, lr}
- 138              	.LCFI1:
- 139              		.cfi_def_cfa_offset 8
- 140              		.cfi_offset 3, -8
- 141              		.cfi_offset 14, -4
-  31:Modules/src/LED.cpp ****         this->LED_state = (this->LED_state == state::on) ? state::off : state::on;
-ARM GAS  /tmp/ccjI9PYc.s 			page 4
+  93 0010 2060     		str	r0, [r4]
+  26:Modules/src/LED.cpp ****         if (LED::status != osOK)  {
+  94              		.loc 1 26 9 is_stmt 1 view .LVU15
+  27:Modules/src/LED.cpp ****                 // timer could not be started
+  28:Modules/src/LED.cpp ****             }
+  29:Modules/src/LED.cpp ****     }
+  95              		.loc 1 29 5 is_stmt 0 view .LVU16
+  96 0012 10BD     		pop	{r4, pc}
+  97              	.LVL5:
+  98              	.L5:
+  99              		.loc 1 29 5 view .LVU17
+ 100              		.align	2
+ 101              	.L4:
+ 102 0014 00000000 		.word	_ZN8STM32LED3LED15toggle_callbackEPv
+ 103              		.cfi_endproc
+ 104              	.LFE1260:
+ 105              		.fnend
+ 107              		.section	.text._ZN8STM32LED3LED3setENS_5stateE,"ax",%progbits
+ 108              		.align	1
+ 109              		.global	_ZN8STM32LED3LED3setENS_5stateE
+ 110              		.syntax unified
+ 111              		.thumb
+ 112              		.thumb_func
+ 113              		.fpu fpv5-d16
+ 115              	_ZN8STM32LED3LED3setENS_5stateE:
+ 116              		.fnstart
+ 117              	.LVL6:
+ 118              	.LFB1261:
+  30:Modules/src/LED.cpp **** 
+  31:Modules/src/LED.cpp ****     void LED::set(state s) //set the state of the LEDs
+  32:Modules/src/LED.cpp ****     {
+ 119              		.loc 1 32 5 is_stmt 1 view -0
+ 120              		.cfi_startproc
+ 121              		@ args = 0, pretend = 0, frame = 0
+ 122              		@ frame_needed = 0, uses_anonymous_args = 0
+ 123              		.loc 1 32 5 is_stmt 0 view .LVU19
+ 124 0000 10B5     		push	{r4, lr}
+ 125              		.save {r4, lr}
+ 126              	.LCFI1:
+ 127              		.cfi_def_cfa_offset 8
+ 128              		.cfi_offset 4, -8
+ 129              		.cfi_offset 14, -4
+ 130 0002 0446     		mov	r4, r0
+  33:Modules/src/LED.cpp ****         int timer_delay = 1000;
+ 131              		.loc 1 33 9 is_stmt 1 view .LVU20
+ 132              	.LVL7:
+  34:Modules/src/LED.cpp **** 
+  35:Modules/src/LED.cpp ****         this->LED_state = s;
+ 133              		.loc 1 35 9 view .LVU21
+ 134              		.loc 1 35 25 is_stmt 0 view .LVU22
+ 135 0004 8160     		str	r1, [r0, #8]
+  36:Modules/src/LED.cpp ****         if(s == state::on)
+ 136              		.loc 1 36 9 is_stmt 1 view .LVU23
+ 137 0006 21B1     		cbz	r1, .L11
+  37:Modules/src/LED.cpp ****         {
+  38:Modules/src/LED.cpp ****             HAL_GPIO_WritePin(this->gpio_port, this->gpio_pin, GPIO_PIN_SET);
+  39:Modules/src/LED.cpp ****             LED::status = osTimerStop (LED::blink_id);                               // stop timer
+ARM GAS  /tmp/ccXwTnK3.s 			page 4
 
 
- 142              		.loc 1 31 9 is_stmt 1 view .LVU26
- 143              		.loc 1 31 34 is_stmt 0 view .LVU27
- 144 0002 0368     		ldr	r3, [r0]
- 145              		.loc 1 31 58 view .LVU28
- 146 0004 33B9     		cbnz	r3, .L8
- 147 0006 0123     		movs	r3, #1
- 148              	.L7:
- 149              		.loc 1 31 25 discriminator 4 view .LVU29
- 150 0008 0360     		str	r3, [r0]
-  32:Modules/src/LED.cpp ****         HAL_GPIO_TogglePin(this->gpio_port, this->gpio_pin);
- 151              		.loc 1 32 9 is_stmt 1 discriminator 4 view .LVU30
- 152              		.loc 1 32 27 is_stmt 0 discriminator 4 view .LVU31
- 153 000a 0189     		ldrh	r1, [r0, #8]
- 154 000c 4068     		ldr	r0, [r0, #4]
- 155              	.LVL11:
- 156              		.loc 1 32 27 discriminator 4 view .LVU32
- 157 000e FFF7FEFF 		bl	HAL_GPIO_TogglePin
- 158              	.LVL12:
-  33:Modules/src/LED.cpp ****     }
- 159              		.loc 1 33 5 discriminator 4 view .LVU33
- 160 0012 08BD     		pop	{r3, pc}
- 161              	.LVL13:
- 162              	.L8:
-  31:Modules/src/LED.cpp ****         this->LED_state = (this->LED_state == state::on) ? state::off : state::on;
- 163              		.loc 1 31 58 view .LVU34
- 164 0014 0023     		movs	r3, #0
- 165 0016 F7E7     		b	.L7
- 166              		.cfi_endproc
- 167              	.LFE1256:
- 168              		.fnend
- 170              		.global	_ZN8STM32LED4LED3E
- 171              		.global	_ZN8STM32LED4LED2E
- 172              		.global	_ZN8STM32LED4LED1E
- 173              		.section	.bss._ZN8STM32LED4LED1E,"aw",%nobits
- 174              		.align	2
- 177              	_ZN8STM32LED4LED1E:
- 178 0000 00000000 		.space	4
- 179              		.section	.bss._ZN8STM32LED4LED2E,"aw",%nobits
- 180              		.align	2
- 183              	_ZN8STM32LED4LED2E:
- 184 0000 00000000 		.space	4
- 185              		.section	.bss._ZN8STM32LED4LED3E,"aw",%nobits
- 186              		.align	2
- 189              	_ZN8STM32LED4LED3E:
- 190 0000 00000000 		.space	4
- 191              		.text
- 192              	.Letext0:
- 193              		.file 2 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
- 194              		.file 3 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h733xx.h"
- 195              		.file 4 "/usr/include/newlib/c++/10.3.1/cmath"
- 196              		.file 5 "/usr/include/newlib/c++/10.3.1/type_traits"
- 197              		.file 6 "/usr/include/newlib/c++/10.3.1/concepts"
- 198              		.file 7 "/usr/include/newlib/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/c++config.h"
- 199              		.file 8 "/usr/include/newlib/c++/10.3.1/bits/iterator_concepts.h"
- 200              		.file 9 "/usr/include/newlib/c++/10.3.1/compare"
- 201              		.file 10 "/usr/include/newlib/c++/10.3.1/bits/exception_ptr.h"
- 202              		.file 11 "/usr/include/newlib/c++/10.3.1/debug/debug.h"
-ARM GAS  /tmp/ccjI9PYc.s 			page 5
+  40:Modules/src/LED.cpp ****             if (LED::status != osOK)  {
+  41:Modules/src/LED.cpp ****                 // Timer could not be stopped
+  42:Modules/src/LED.cpp ****             }
+  43:Modules/src/LED.cpp ****         }
+  44:Modules/src/LED.cpp ****         else if(s == state::off)
+ 138              		.loc 1 44 14 view .LVU24
+ 139 0008 0129     		cmp	r1, #1
+ 140 000a 0CD0     		beq	.L12
+  45:Modules/src/LED.cpp ****         {
+  46:Modules/src/LED.cpp ****             HAL_GPIO_WritePin(this->gpio_port, this->gpio_pin, GPIO_PIN_RESET);
+  47:Modules/src/LED.cpp ****             LED::status = osTimerStop (LED::blink_id);                               // stop timer
+  48:Modules/src/LED.cpp ****             if (LED::status != osOK)  {
+  49:Modules/src/LED.cpp ****                 // Timer could not be stopped
+  50:Modules/src/LED.cpp ****             }
+  51:Modules/src/LED.cpp ****         }
+  52:Modules/src/LED.cpp ****         else if(s == state::blink)
+ 141              		.loc 1 52 14 view .LVU25
+ 142 000c 0229     		cmp	r1, #2
+ 143 000e 14D0     		beq	.L13
+ 144              	.LVL8:
+ 145              	.L6:
+  53:Modules/src/LED.cpp ****         {
+  54:Modules/src/LED.cpp ****             //set timer to execute callback function when it expires
+  55:Modules/src/LED.cpp ****             LED::status = osTimerStart (LED::blink_id, timer_delay); 
+  56:Modules/src/LED.cpp ****             
+  57:Modules/src/LED.cpp ****             if (LED::status != osOK)  {
+  58:Modules/src/LED.cpp ****                 // timer could not be started
+  59:Modules/src/LED.cpp ****             }
+  60:Modules/src/LED.cpp **** 
+  61:Modules/src/LED.cpp ****             // keep LED off for now
+  62:Modules/src/LED.cpp ****             HAL_GPIO_WritePin(this->gpio_port, this->gpio_pin, GPIO_PIN_RESET);
+  63:Modules/src/LED.cpp ****         }
+  64:Modules/src/LED.cpp ****     }
+ 146              		.loc 1 64 5 is_stmt 0 view .LVU26
+ 147 0010 10BD     		pop	{r4, pc}
+ 148              	.LVL9:
+ 149              	.L11:
+  38:Modules/src/LED.cpp ****             LED::status = osTimerStop (LED::blink_id);                               // stop timer
+ 150              		.loc 1 38 13 is_stmt 1 view .LVU27
+  38:Modules/src/LED.cpp ****             LED::status = osTimerStop (LED::blink_id);                               // stop timer
+ 151              		.loc 1 38 30 is_stmt 0 view .LVU28
+ 152 0012 0122     		movs	r2, #1
+ 153 0014 018A     		ldrh	r1, [r0, #16]
+ 154              	.LVL10:
+  38:Modules/src/LED.cpp ****             LED::status = osTimerStop (LED::blink_id);                               // stop timer
+ 155              		.loc 1 38 30 view .LVU29
+ 156 0016 C068     		ldr	r0, [r0, #12]
+ 157              	.LVL11:
+  38:Modules/src/LED.cpp ****             LED::status = osTimerStop (LED::blink_id);                               // stop timer
+ 158              		.loc 1 38 30 view .LVU30
+ 159 0018 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 160              	.LVL12:
+  39:Modules/src/LED.cpp ****             if (LED::status != osOK)  {
+ 161              		.loc 1 39 13 is_stmt 1 view .LVU31
+  39:Modules/src/LED.cpp ****             if (LED::status != osOK)  {
+ 162              		.loc 1 39 39 is_stmt 0 view .LVU32
+ 163 001c 2068     		ldr	r0, [r4]
+ARM GAS  /tmp/ccXwTnK3.s 			page 5
 
 
- 203              		.file 12 "/usr/include/newlib/c++/10.3.1/bits/std_abs.h"
- 204              		.file 13 "/usr/include/newlib/c++/10.3.1/bits/predefined_ops.h"
- 205              		.file 14 "/usr/include/newlib/math.h"
- 206              		.file 15 "/usr/include/newlib/c++/10.3.1/bits/ptr_traits.h"
- 207              		.file 16 "/usr/include/newlib/c++/10.3.1/math.h"
- 208              		.file 17 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h"
- 209              		.file 18 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
- 210              		.file 19 "Modules/inc/LED.h"
- 211              		.file 20 "<built-in>"
-ARM GAS  /tmp/ccjI9PYc.s 			page 6
+ 164 001e FFF7FEFF 		bl	osTimerStop
+ 165              	.LVL13:
+  39:Modules/src/LED.cpp ****             if (LED::status != osOK)  {
+ 166              		.loc 1 39 25 view .LVU33
+ 167 0022 6060     		str	r0, [r4, #4]
+  40:Modules/src/LED.cpp ****                 // Timer could not be stopped
+ 168              		.loc 1 40 13 is_stmt 1 view .LVU34
+ 169 0024 F4E7     		b	.L6
+ 170              	.LVL14:
+ 171              	.L12:
+  46:Modules/src/LED.cpp ****             LED::status = osTimerStop (LED::blink_id);                               // stop timer
+ 172              		.loc 1 46 13 view .LVU35
+  46:Modules/src/LED.cpp ****             LED::status = osTimerStop (LED::blink_id);                               // stop timer
+ 173              		.loc 1 46 30 is_stmt 0 view .LVU36
+ 174 0026 0022     		movs	r2, #0
+ 175 0028 018A     		ldrh	r1, [r0, #16]
+ 176              	.LVL15:
+  46:Modules/src/LED.cpp ****             LED::status = osTimerStop (LED::blink_id);                               // stop timer
+ 177              		.loc 1 46 30 view .LVU37
+ 178 002a C068     		ldr	r0, [r0, #12]
+ 179              	.LVL16:
+  46:Modules/src/LED.cpp ****             LED::status = osTimerStop (LED::blink_id);                               // stop timer
+ 180              		.loc 1 46 30 view .LVU38
+ 181 002c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 182              	.LVL17:
+  47:Modules/src/LED.cpp ****             if (LED::status != osOK)  {
+ 183              		.loc 1 47 13 is_stmt 1 view .LVU39
+  47:Modules/src/LED.cpp ****             if (LED::status != osOK)  {
+ 184              		.loc 1 47 39 is_stmt 0 view .LVU40
+ 185 0030 2068     		ldr	r0, [r4]
+ 186 0032 FFF7FEFF 		bl	osTimerStop
+ 187              	.LVL18:
+  47:Modules/src/LED.cpp ****             if (LED::status != osOK)  {
+ 188              		.loc 1 47 25 view .LVU41
+ 189 0036 6060     		str	r0, [r4, #4]
+  48:Modules/src/LED.cpp ****                 // Timer could not be stopped
+ 190              		.loc 1 48 13 is_stmt 1 view .LVU42
+ 191 0038 EAE7     		b	.L6
+ 192              	.LVL19:
+ 193              	.L13:
+  55:Modules/src/LED.cpp ****             
+ 194              		.loc 1 55 13 view .LVU43
+  55:Modules/src/LED.cpp ****             
+ 195              		.loc 1 55 40 is_stmt 0 view .LVU44
+ 196 003a 4FF47A71 		mov	r1, #1000
+ 197              	.LVL20:
+  55:Modules/src/LED.cpp ****             
+ 198              		.loc 1 55 40 view .LVU45
+ 199 003e 0068     		ldr	r0, [r0]
+ 200              	.LVL21:
+  55:Modules/src/LED.cpp ****             
+ 201              		.loc 1 55 40 view .LVU46
+ 202 0040 FFF7FEFF 		bl	osTimerStart
+ 203              	.LVL22:
+  55:Modules/src/LED.cpp ****             
+ 204              		.loc 1 55 25 view .LVU47
+ 205 0044 6060     		str	r0, [r4, #4]
+ARM GAS  /tmp/ccXwTnK3.s 			page 6
+
+
+  57:Modules/src/LED.cpp ****                 // timer could not be started
+ 206              		.loc 1 57 13 is_stmt 1 view .LVU48
+  62:Modules/src/LED.cpp ****         }
+ 207              		.loc 1 62 13 view .LVU49
+  62:Modules/src/LED.cpp ****         }
+ 208              		.loc 1 62 30 is_stmt 0 view .LVU50
+ 209 0046 0022     		movs	r2, #0
+ 210 0048 218A     		ldrh	r1, [r4, #16]
+ 211 004a E068     		ldr	r0, [r4, #12]
+ 212 004c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 213              	.LVL23:
+ 214              		.loc 1 64 5 view .LVU51
+ 215 0050 DEE7     		b	.L6
+ 216              		.cfi_endproc
+ 217              	.LFE1261:
+ 218              		.fnend
+ 220              		.section	.text._ZN8STM32LED3LED6toggleEPS0_,"ax",%progbits
+ 221              		.align	1
+ 222              		.global	_ZN8STM32LED3LED6toggleEPS0_
+ 223              		.syntax unified
+ 224              		.thumb
+ 225              		.thumb_func
+ 226              		.fpu fpv5-d16
+ 228              	_ZN8STM32LED3LED6toggleEPS0_:
+ 229              		.fnstart
+ 230              	.LVL24:
+ 231              	.LFB1262:
+  65:Modules/src/LED.cpp ****     
+  66:Modules/src/LED.cpp ****     void LED::toggle(LED* led)
+  67:Modules/src/LED.cpp ****     {
+ 232              		.loc 1 67 5 is_stmt 1 view -0
+ 233              		.cfi_startproc
+ 234              		@ args = 0, pretend = 0, frame = 0
+ 235              		@ frame_needed = 0, uses_anonymous_args = 0
+ 236              		.loc 1 67 5 is_stmt 0 view .LVU53
+ 237 0000 08B5     		push	{r3, lr}
+ 238              		.save {r3, lr}
+ 239              	.LCFI2:
+ 240              		.cfi_def_cfa_offset 8
+ 241              		.cfi_offset 3, -8
+ 242              		.cfi_offset 14, -4
+  68:Modules/src/LED.cpp ****         // this->LED_state = (this->LED_state == state::on) ? state::off : state::on;
+  69:Modules/src/LED.cpp ****         if(led -> LED_state == state::on)    led->LED_state = state::off;
+ 243              		.loc 1 69 9 is_stmt 1 view .LVU54
+ 244              		.loc 1 69 19 is_stmt 0 view .LVU55
+ 245 0002 8368     		ldr	r3, [r0, #8]
+ 246              		.loc 1 69 9 view .LVU56
+ 247 0004 0BB9     		cbnz	r3, .L15
+ 248              		.loc 1 69 46 is_stmt 1 discriminator 1 view .LVU57
+ 249              		.loc 1 69 61 is_stmt 0 discriminator 1 view .LVU58
+ 250 0006 0123     		movs	r3, #1
+ 251 0008 8360     		str	r3, [r0, #8]
+ 252              	.L15:
+  70:Modules/src/LED.cpp ****         if(led -> LED_state == state::off)   led->LED_state = state::on;
+ 253              		.loc 1 70 9 is_stmt 1 view .LVU59
+ 254              		.loc 1 70 19 is_stmt 0 view .LVU60
+ 255 000a 8368     		ldr	r3, [r0, #8]
+ARM GAS  /tmp/ccXwTnK3.s 			page 7
+
+
+ 256              		.loc 1 70 9 view .LVU61
+ 257 000c 012B     		cmp	r3, #1
+ 258 000e 04D0     		beq	.L18
+ 259              	.L16:
+  71:Modules/src/LED.cpp ****         HAL_GPIO_TogglePin(led->gpio_port, led->gpio_pin);
+ 260              		.loc 1 71 9 is_stmt 1 view .LVU62
+ 261              		.loc 1 71 27 is_stmt 0 view .LVU63
+ 262 0010 018A     		ldrh	r1, [r0, #16]
+ 263 0012 C068     		ldr	r0, [r0, #12]
+ 264              	.LVL25:
+ 265              		.loc 1 71 27 view .LVU64
+ 266 0014 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 267              	.LVL26:
+  72:Modules/src/LED.cpp ****     }
+ 268              		.loc 1 72 5 view .LVU65
+ 269 0018 08BD     		pop	{r3, pc}
+ 270              	.LVL27:
+ 271              	.L18:
+  70:Modules/src/LED.cpp ****         if(led -> LED_state == state::off)   led->LED_state = state::on;
+ 272              		.loc 1 70 46 is_stmt 1 discriminator 1 view .LVU66
+  70:Modules/src/LED.cpp ****         if(led -> LED_state == state::off)   led->LED_state = state::on;
+ 273              		.loc 1 70 61 is_stmt 0 discriminator 1 view .LVU67
+ 274 001a 0023     		movs	r3, #0
+ 275 001c 8360     		str	r3, [r0, #8]
+ 276 001e F7E7     		b	.L16
+ 277              		.cfi_endproc
+ 278              	.LFE1262:
+ 279              		.fnend
+ 281              		.section	.text._ZN8STM32LED3LED15toggle_callbackEPv,"ax",%progbits
+ 282              		.align	1
+ 283              		.global	_ZN8STM32LED3LED15toggle_callbackEPv
+ 284              		.syntax unified
+ 285              		.thumb
+ 286              		.thumb_func
+ 287              		.fpu fpv5-d16
+ 289              	_ZN8STM32LED3LED15toggle_callbackEPv:
+ 290              		.fnstart
+ 291              	.LVL28:
+ 292              	.LFB1259:
+  18:Modules/src/LED.cpp ****         LED::toggle((LED*)led);
+ 293              		.loc 1 18 5 is_stmt 1 view -0
+ 294              		.cfi_startproc
+ 295              		@ args = 0, pretend = 0, frame = 0
+ 296              		@ frame_needed = 0, uses_anonymous_args = 0
+  18:Modules/src/LED.cpp ****         LED::toggle((LED*)led);
+ 297              		.loc 1 18 5 is_stmt 0 view .LVU69
+ 298 0000 08B5     		push	{r3, lr}
+ 299              		.save {r3, lr}
+ 300              	.LCFI3:
+ 301              		.cfi_def_cfa_offset 8
+ 302              		.cfi_offset 3, -8
+ 303              		.cfi_offset 14, -4
+  19:Modules/src/LED.cpp ****     }
+ 304              		.loc 1 19 9 is_stmt 1 view .LVU70
+  19:Modules/src/LED.cpp ****     }
+ 305              		.loc 1 19 20 is_stmt 0 view .LVU71
+ 306 0002 FFF7FEFF 		bl	_ZN8STM32LED3LED6toggleEPS0_
+ARM GAS  /tmp/ccXwTnK3.s 			page 8
+
+
+ 307              	.LVL29:
+  20:Modules/src/LED.cpp ****     //Call this function in main, and this function should also be inside the class.
+ 308              		.loc 1 20 5 view .LVU72
+ 309 0006 08BD     		pop	{r3, pc}
+ 310              		.cfi_endproc
+ 311              	.LFE1259:
+ 312              		.fnend
+ 314              		.section	.text._ZN8STM32LED7setModeEPNS_3LEDES1_S1_NS_5stateE,"ax",%progbits
+ 315              		.align	1
+ 316              		.global	_ZN8STM32LED7setModeEPNS_3LEDES1_S1_NS_5stateE
+ 317              		.syntax unified
+ 318              		.thumb
+ 319              		.thumb_func
+ 320              		.fpu fpv5-d16
+ 322              	_ZN8STM32LED7setModeEPNS_3LEDES1_S1_NS_5stateE:
+ 323              		.fnstart
+ 324              	.LVL30:
+ 325              	.LFB1263:
+  73:Modules/src/LED.cpp **** 
+  74:Modules/src/LED.cpp ****     //manipulates the states for all three LEDs at the same time
+  75:Modules/src/LED.cpp ****     //this function cannot be inside the class, it should only be inside the namespace 
+  76:Modules/src/LED.cpp ****     void setMode(LED * LED1, LED * LED2, LED* LED3, state s)
+  77:Modules/src/LED.cpp ****     {
+ 326              		.loc 1 77 5 is_stmt 1 view -0
+ 327              		.cfi_startproc
+ 328              		@ args = 0, pretend = 0, frame = 0
+ 329              		@ frame_needed = 0, uses_anonymous_args = 0
+ 330              		.loc 1 77 5 is_stmt 0 view .LVU74
+ 331 0000 70B5     		push	{r4, r5, r6, lr}
+ 332              		.save {r4, r5, r6, lr}
+ 333              	.LCFI4:
+ 334              		.cfi_def_cfa_offset 16
+ 335              		.cfi_offset 4, -16
+ 336              		.cfi_offset 5, -12
+ 337              		.cfi_offset 6, -8
+ 338              		.cfi_offset 14, -4
+ 339 0002 0E46     		mov	r6, r1
+ 340 0004 1546     		mov	r5, r2
+ 341 0006 1C46     		mov	r4, r3
+  78:Modules/src/LED.cpp ****         LED1->set(s);
+ 342              		.loc 1 78 9 is_stmt 1 view .LVU75
+ 343              		.loc 1 78 18 is_stmt 0 view .LVU76
+ 344 0008 1946     		mov	r1, r3
+ 345              	.LVL31:
+ 346              		.loc 1 78 18 view .LVU77
+ 347 000a FFF7FEFF 		bl	_ZN8STM32LED3LED3setENS_5stateE
+ 348              	.LVL32:
+  79:Modules/src/LED.cpp ****         LED2->set(s);
+ 349              		.loc 1 79 9 is_stmt 1 view .LVU78
+ 350              		.loc 1 79 18 is_stmt 0 view .LVU79
+ 351 000e 2146     		mov	r1, r4
+ 352 0010 3046     		mov	r0, r6
+ 353 0012 FFF7FEFF 		bl	_ZN8STM32LED3LED3setENS_5stateE
+ 354              	.LVL33:
+  80:Modules/src/LED.cpp ****         LED3->set(s);
+ 355              		.loc 1 80 9 is_stmt 1 view .LVU80
+ 356              		.loc 1 80 18 is_stmt 0 view .LVU81
+ARM GAS  /tmp/ccXwTnK3.s 			page 9
+
+
+ 357 0016 2146     		mov	r1, r4
+ 358 0018 2846     		mov	r0, r5
+ 359 001a FFF7FEFF 		bl	_ZN8STM32LED3LED3setENS_5stateE
+ 360              	.LVL34:
+  81:Modules/src/LED.cpp ****     }
+ 361              		.loc 1 81 5 view .LVU82
+ 362 001e 70BD     		pop	{r4, r5, r6, pc}
+ 363              		.loc 1 81 5 view .LVU83
+ 364              		.cfi_endproc
+ 365              	.LFE1263:
+ 366              		.fnend
+ 368              		.global	_ZN8STM32LED4LED3E
+ 369              		.global	_ZN8STM32LED4LED2E
+ 370              		.global	_ZN8STM32LED4LED1E
+ 371              		.section	.bss._ZN8STM32LED4LED1E,"aw",%nobits
+ 372              		.align	2
+ 375              	_ZN8STM32LED4LED1E:
+ 376 0000 00000000 		.space	4
+ 377              		.section	.bss._ZN8STM32LED4LED2E,"aw",%nobits
+ 378              		.align	2
+ 381              	_ZN8STM32LED4LED2E:
+ 382 0000 00000000 		.space	4
+ 383              		.section	.bss._ZN8STM32LED4LED3E,"aw",%nobits
+ 384              		.align	2
+ 387              	_ZN8STM32LED4LED3E:
+ 388 0000 00000000 		.space	4
+ 389              		.text
+ 390              	.Letext0:
+ 391              		.file 2 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
+ 392              		.file 3 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h733xx.h"
+ 393              		.file 4 "/usr/include/newlib/c++/10.3.1/cmath"
+ 394              		.file 5 "/usr/include/newlib/c++/10.3.1/type_traits"
+ 395              		.file 6 "/usr/include/newlib/c++/10.3.1/concepts"
+ 396              		.file 7 "/usr/include/newlib/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/c++config.h"
+ 397              		.file 8 "/usr/include/newlib/c++/10.3.1/bits/iterator_concepts.h"
+ 398              		.file 9 "/usr/include/newlib/c++/10.3.1/compare"
+ 399              		.file 10 "/usr/include/newlib/c++/10.3.1/bits/exception_ptr.h"
+ 400              		.file 11 "/usr/include/newlib/c++/10.3.1/debug/debug.h"
+ 401              		.file 12 "/usr/include/newlib/c++/10.3.1/bits/std_abs.h"
+ 402              		.file 13 "/usr/include/newlib/c++/10.3.1/bits/predefined_ops.h"
+ 403              		.file 14 "/usr/include/newlib/math.h"
+ 404              		.file 15 "/usr/include/newlib/c++/10.3.1/bits/ptr_traits.h"
+ 405              		.file 16 "/usr/include/newlib/c++/10.3.1/math.h"
+ 406              		.file 17 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h"
+ 407              		.file 18 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
+ 408              		.file 19 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h"
+ 409              		.file 20 "Modules/inc/LED.h"
+ 410              		.file 21 "<built-in>"
+ARM GAS  /tmp/ccXwTnK3.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 LED.cpp
-     /tmp/ccjI9PYc.s:17     .text._ZN8STM32LED3LEDC2EP12GPIO_TypeDeft:0000000000000000 $t
-     /tmp/ccjI9PYc.s:25     .text._ZN8STM32LED3LEDC2EP12GPIO_TypeDeft:0000000000000000 _ZN8STM32LED3LEDC2EP12GPIO_TypeDeft
+     /tmp/ccXwTnK3.s:17     .text._ZN8STM32LED3LEDC2EP12GPIO_TypeDeft:0000000000000000 $t
+     /tmp/ccXwTnK3.s:25     .text._ZN8STM32LED3LEDC2EP12GPIO_TypeDeft:0000000000000000 _ZN8STM32LED3LEDC2EP12GPIO_TypeDeft
 .ARM.exidx.text._ZN8STM32LED3LEDC2EP12GPIO_TypeDeft:0000000000000000 $d
-     /tmp/ccjI9PYc.s:25     .text._ZN8STM32LED3LEDC2EP12GPIO_TypeDeft:0000000000000000 _ZN8STM32LED3LEDC1EP12GPIO_TypeDeft
-     /tmp/ccjI9PYc.s:59     .text._ZN8STM32LED3LED3setENS_5stateE:0000000000000000 $t
-     /tmp/ccjI9PYc.s:66     .text._ZN8STM32LED3LED3setENS_5stateE:0000000000000000 _ZN8STM32LED3LED3setENS_5stateE
-.ARM.extab.text._ZN8STM32LED3LED3setENS_5stateE:0000000000000000 $d
+     /tmp/ccXwTnK3.s:25     .text._ZN8STM32LED3LEDC2EP12GPIO_TypeDeft:0000000000000000 _ZN8STM32LED3LEDC1EP12GPIO_TypeDeft
+     /tmp/ccXwTnK3.s:59     .text._ZN8STM32LED3LED10timer_initEv:0000000000000000 $t
+     /tmp/ccXwTnK3.s:66     .text._ZN8STM32LED3LED10timer_initEv:0000000000000000 _ZN8STM32LED3LED10timer_initEv
+     /tmp/ccXwTnK3.s:102    .text._ZN8STM32LED3LED10timer_initEv:0000000000000014 $d
+     /tmp/ccXwTnK3.s:289    .text._ZN8STM32LED3LED15toggle_callbackEPv:0000000000000000 _ZN8STM32LED3LED15toggle_callbackEPv
+.ARM.exidx.text._ZN8STM32LED3LED10timer_initEv:0000000000000000 $d
+     /tmp/ccXwTnK3.s:108    .text._ZN8STM32LED3LED3setENS_5stateE:0000000000000000 $t
+     /tmp/ccXwTnK3.s:115    .text._ZN8STM32LED3LED3setENS_5stateE:0000000000000000 _ZN8STM32LED3LED3setENS_5stateE
 .ARM.exidx.text._ZN8STM32LED3LED3setENS_5stateE:0000000000000000 $d
-     /tmp/ccjI9PYc.s:120    .text._ZN8STM32LED3LED6toggleEv:0000000000000000 $t
-     /tmp/ccjI9PYc.s:127    .text._ZN8STM32LED3LED6toggleEv:0000000000000000 _ZN8STM32LED3LED6toggleEv
-.ARM.extab.text._ZN8STM32LED3LED6toggleEv:0000000000000000 $d
-.ARM.exidx.text._ZN8STM32LED3LED6toggleEv:0000000000000000 $d
-     /tmp/ccjI9PYc.s:189    .bss._ZN8STM32LED4LED3E:0000000000000000 _ZN8STM32LED4LED3E
-     /tmp/ccjI9PYc.s:183    .bss._ZN8STM32LED4LED2E:0000000000000000 _ZN8STM32LED4LED2E
-     /tmp/ccjI9PYc.s:177    .bss._ZN8STM32LED4LED1E:0000000000000000 _ZN8STM32LED4LED1E
-     /tmp/ccjI9PYc.s:174    .bss._ZN8STM32LED4LED1E:0000000000000000 $d
-     /tmp/ccjI9PYc.s:180    .bss._ZN8STM32LED4LED2E:0000000000000000 $d
-     /tmp/ccjI9PYc.s:186    .bss._ZN8STM32LED4LED3E:0000000000000000 $d
+     /tmp/ccXwTnK3.s:221    .text._ZN8STM32LED3LED6toggleEPS0_:0000000000000000 $t
+     /tmp/ccXwTnK3.s:228    .text._ZN8STM32LED3LED6toggleEPS0_:0000000000000000 _ZN8STM32LED3LED6toggleEPS0_
+.ARM.extab.text._ZN8STM32LED3LED6toggleEPS0_:0000000000000000 $d
+.ARM.exidx.text._ZN8STM32LED3LED6toggleEPS0_:0000000000000000 $d
+     /tmp/ccXwTnK3.s:282    .text._ZN8STM32LED3LED15toggle_callbackEPv:0000000000000000 $t
+.ARM.extab.text._ZN8STM32LED3LED15toggle_callbackEPv:0000000000000000 $d
+.ARM.exidx.text._ZN8STM32LED3LED15toggle_callbackEPv:0000000000000000 $d
+     /tmp/ccXwTnK3.s:315    .text._ZN8STM32LED7setModeEPNS_3LEDES1_S1_NS_5stateE:0000000000000000 $t
+     /tmp/ccXwTnK3.s:322    .text._ZN8STM32LED7setModeEPNS_3LEDES1_S1_NS_5stateE:0000000000000000 _ZN8STM32LED7setModeEPNS_3LEDES1_S1_NS_5stateE
+.ARM.exidx.text._ZN8STM32LED7setModeEPNS_3LEDES1_S1_NS_5stateE:0000000000000000 $d
+     /tmp/ccXwTnK3.s:387    .bss._ZN8STM32LED4LED3E:0000000000000000 _ZN8STM32LED4LED3E
+     /tmp/ccXwTnK3.s:381    .bss._ZN8STM32LED4LED2E:0000000000000000 _ZN8STM32LED4LED2E
+     /tmp/ccXwTnK3.s:375    .bss._ZN8STM32LED4LED1E:0000000000000000 _ZN8STM32LED4LED1E
+     /tmp/ccXwTnK3.s:372    .bss._ZN8STM32LED4LED1E:0000000000000000 $d
+     /tmp/ccXwTnK3.s:378    .bss._ZN8STM32LED4LED2E:0000000000000000 $d
+     /tmp/ccXwTnK3.s:384    .bss._ZN8STM32LED4LED3E:0000000000000000 $d
 
 UNDEFINED SYMBOLS
+osTimerNew
+__aeabi_unwind_cpp_pr0
 HAL_GPIO_WritePin
-__aeabi_unwind_cpp_pr1
+osTimerStop
+osTimerStart
 HAL_GPIO_TogglePin
+__aeabi_unwind_cpp_pr1
