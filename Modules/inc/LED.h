@@ -18,7 +18,7 @@ namespace STM32LED
         public:
             LED(GPIO_TypeDef* gpio_port, uint16_t gpio_pin);
             void set(state s);
-            static void toggle(LED* led);
+            void toggle();
             static void toggle_callback(void* led);
             void timer_init();
 
@@ -37,7 +37,7 @@ namespace STM32LED
     extern LED* LED2;
     extern LED* LED3;
     //setmode()should be in here 
-    void setMode(LED * LED1, LED * LED2, LED* LED3, state s);
+    void setMode(state s);
 }
 
 #endif

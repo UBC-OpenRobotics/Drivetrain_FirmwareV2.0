@@ -16,7 +16,7 @@ namespace STM32LED
 
     void LED::toggle_callback(void* led) //toggle LED each time timer expired
     {   
-        ((LED*) led) -> toggle((LED*)led);
+        ((LED*) led) -> toggle();
     }
     //Call this function in main, and this function should also be inside the class.
 
@@ -30,7 +30,7 @@ namespace STM32LED
 
     void LED::set(state s) //set the state of the LEDs
     {
-        int timer_delay = 1000;
+        int timer_delay = 250;
 
         this->LED_state = s;
         if(s == state::on)
@@ -63,17 +63,17 @@ namespace STM32LED
         }
     }
     
-    void LED::toggle(LED* led)
+    void LED::toggle()
     {
         // this->LED_state = (this->LED_state == state::on) ? state::off : state::on;
-        if(led -> LED_state == state::on)    led->LED_state = state::off;
-        if(led -> LED_state == state::off)   led->LED_state = state::on;
-        HAL_GPIO_TogglePin(led->gpio_port, led->gpio_pin);
+        if(this -> LED_state == state::on)    this->LED_state = state::off;
+        if(this -> LED_state == state::off)    this->LED_state = state::on;
+        HAL_GPIO_TogglePin(this->gpio_port, this->gpio_pin);
     }
 
     //manipulates the states for all three LEDs at the same time
     //this function cannot be inside the class, it should only be inside the namespace 
-    void setMode(LED * LED1, LED * LED2, LED* LED3, state s)
+    void setMode(state s)
     {
         LED1->set(s);
         LED2->set(s);
