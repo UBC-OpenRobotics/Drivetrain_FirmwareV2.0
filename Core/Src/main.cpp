@@ -117,6 +117,9 @@ int main(void)
   /* USER CODE END RTOS_SEMAPHORES */
 
   /* USER CODE BEGIN RTOS_TIMERS */
+    STM32LED::LED1->timer_init();
+    STM32LED::LED2->timer_init();
+    STM32LED::LED3->timer_init();
   /* start timers, add new ones, ... */
   /* USER CODE END RTOS_TIMERS */
 
@@ -134,6 +137,7 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_EVENTS */
   /* add events, ... */
+  STM32LED::setMode(STM32LED::state::blink);
   /* USER CODE END RTOS_EVENTS */
 
   /* Start scheduler */
@@ -326,14 +330,14 @@ void StartDefaultTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    STM32LED:: LED1 -> toggle();
-    osDelay(5);
-    __HAL_TIM_SET_AUTORELOAD(&htim2, 1);
-    STM32LED:: LED2 -> toggle();
-    osDelay(5);
-    STM32LED:: LED3 -> toggle();
-    __HAL_TIM_SET_AUTORELOAD(&htim2, 1000);
-    osDelay(5);
+    // STM32LED:: LED1 -> toggle();
+    // osDelay(5);
+    // __HAL_TIM_SET_AUTORELOAD(&htim2, 1);
+    // STM32LED:: LED2 -> toggle();
+    // osDelay(5);
+    // STM32LED:: LED3 -> toggle();
+    // __HAL_TIM_SET_AUTORELOAD(&htim2, 1000);
+     osDelay(5);
   }
   /* USER CODE END 5 */
 }
