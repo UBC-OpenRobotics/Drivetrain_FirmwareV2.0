@@ -1799,6 +1799,51 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 build/port.o
  .text.vPortEndScheduler
                 0x0000000000000000       0x24 build/port.o
+ .text          0x0000000000000000        0x0 build/motorControl.o
+ .data          0x0000000000000000        0x0 build/motorControl.o
+ .bss           0x0000000000000000        0x0 build/motorControl.o
+ .text._ZN18STM32_motorControl12motorControlC2EP12GPIO_TypeDeftP17TIM_HandleTypeDef
+                0x0000000000000000       0x14 build/motorControl.o
+ .ARM.extab.text._ZN18STM32_motorControl12motorControlC2EP12GPIO_TypeDeftP17TIM_HandleTypeDef
+                0x0000000000000000        0x0 build/motorControl.o
+ .ARM.exidx.text._ZN18STM32_motorControl12motorControlC2EP12GPIO_TypeDeftP17TIM_HandleTypeDef
+                0x0000000000000000        0x8 build/motorControl.o
+ .text._ZN18STM32_motorControl12motorControl11timer_startEv
+                0x0000000000000000        0xa build/motorControl.o
+ .ARM.extab.text._ZN18STM32_motorControl12motorControl11timer_startEv
+                0x0000000000000000        0xc build/motorControl.o
+ .ARM.exidx.text._ZN18STM32_motorControl12motorControl11timer_startEv
+                0x0000000000000000        0x8 build/motorControl.o
+ .text._ZN18STM32_motorControl12motorControl10timer_stopEv
+                0x0000000000000000        0xa build/motorControl.o
+ .ARM.extab.text._ZN18STM32_motorControl12motorControl10timer_stopEv
+                0x0000000000000000        0xc build/motorControl.o
+ .ARM.exidx.text._ZN18STM32_motorControl12motorControl10timer_stopEv
+                0x0000000000000000        0x8 build/motorControl.o
+ .text._ZN18STM32_motorControl12motorControl22adjust_timer_frequencyEt
+                0x0000000000000000        0xe build/motorControl.o
+ .ARM.extab.text._ZN18STM32_motorControl12motorControl22adjust_timer_frequencyEt
+                0x0000000000000000        0x0 build/motorControl.o
+ .ARM.exidx.text._ZN18STM32_motorControl12motorControl22adjust_timer_frequencyEt
+                0x0000000000000000        0x8 build/motorControl.o
+ .text._ZN18STM32_motorControl12motorControl25calculate_timer_frequencyEt
+                0x0000000000000000        0x6 build/motorControl.o
+ .ARM.extab.text._ZN18STM32_motorControl12motorControl25calculate_timer_frequencyEt
+                0x0000000000000000        0x0 build/motorControl.o
+ .ARM.exidx.text._ZN18STM32_motorControl12motorControl25calculate_timer_frequencyEt
+                0x0000000000000000        0x8 build/motorControl.o
+ .debug_info    0x0000000000000000     0x27ce build/motorControl.o
+ .debug_abbrev  0x0000000000000000      0x453 build/motorControl.o
+ .debug_loc     0x0000000000000000       0xaa build/motorControl.o
+ .debug_aranges
+                0x0000000000000000       0x40 build/motorControl.o
+ .debug_ranges  0x0000000000000000       0x30 build/motorControl.o
+ .debug_line    0x0000000000000000      0x35d build/motorControl.o
+ .debug_str     0x0000000000000000     0x1a6a build/motorControl.o
+ .comment       0x0000000000000000       0x34 build/motorControl.o
+ .debug_frame   0x0000000000000000       0x78 build/motorControl.o
+ .ARM.attributes
+                0x0000000000000000       0x32 build/motorControl.o
  .text          0x0000000000000000        0x0 build/LED.o
  .data          0x0000000000000000        0x0 build/LED.o
  .bss           0x0000000000000000        0x0 build/LED.o
@@ -2260,6 +2305,7 @@ LOAD build/timers.o
 LOAD build/cmsis_os2.o
 LOAD build/heap_4.o
 LOAD build/port.o
+LOAD build/motorControl.o
 LOAD build/LED.o
 LOAD build/main.o
 LOAD build/startup_stm32h733xx.o
@@ -4289,7 +4335,7 @@ LOAD /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+dp/hard/libgcc.a
  .debug_line    0x000000000001dda2       0x79 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libnosys.a(sbrk.o)
  .debug_line    0x000000000001de1b       0x75 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libnosys.a(_exit.o)
 
-.debug_str      0x0000000000000000     0xd693
+.debug_str      0x0000000000000000     0xd6b1
  .debug_str     0x0000000000000000      0x668 build/stm32h7xx_it.o
                                         0x859 (size before relaxing)
  .debug_str     0x0000000000000668      0xacb build/stm32h7xx_hal_msp.o
@@ -4328,96 +4374,96 @@ LOAD /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+dp/hard/libgcc.a
                                         0x449 (size before relaxing)
  .debug_str     0x00000000000073b5     0x100d build/LED.o
                                        0x1224 (size before relaxing)
- .debug_str     0x00000000000083c2      0x36e build/main.o
-                                       0x26c6 (size before relaxing)
- .debug_str     0x0000000000008730       0x22 build/startup_stm32h733xx.o
-                                         0x44 (size before relaxing)
- .debug_str     0x0000000000008752      0x16e /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(del_ops.o)
+ .debug_str     0x00000000000083c2      0x38c build/main.o
+                                       0x26c2 (size before relaxing)
+ .debug_str     0x000000000000874e       0x22 build/startup_stm32h733xx.o
+                                         0x40 (size before relaxing)
+ .debug_str     0x0000000000008770      0x16e /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(del_ops.o)
                                         0x614 (size before relaxing)
- .debug_str     0x00000000000088c0      0x57c /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(eh_arm.o)
+ .debug_str     0x00000000000088de      0x57c /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(eh_arm.o)
                                         0xb3e (size before relaxing)
- .debug_str     0x0000000000008e3c      0x4b6 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(eh_exception.o)
+ .debug_str     0x0000000000008e5a      0x4b6 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(eh_exception.o)
                                         0xa10 (size before relaxing)
- .debug_str     0x00000000000092f2      0x1ee /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(eh_globals.o)
+ .debug_str     0x0000000000009310      0x1ee /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(eh_globals.o)
                                         0xa22 (size before relaxing)
- .debug_str     0x00000000000094e0      0x6ae /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(eh_personality.o)
+ .debug_str     0x00000000000094fe      0x6ae /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(eh_personality.o)
                                        0x1112 (size before relaxing)
- .debug_str     0x0000000000009b8e      0x296 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(eh_terminate.o)
+ .debug_str     0x0000000000009bac      0x296 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(eh_terminate.o)
                                         0x98f (size before relaxing)
- .debug_str     0x0000000000009e24      0x108 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(eh_unex_handler.o)
+ .debug_str     0x0000000000009e42      0x108 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(eh_unex_handler.o)
                                         0x690 (size before relaxing)
- .debug_str     0x0000000000009f2c      0x17e /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(new_op.o)
+ .debug_str     0x0000000000009f4a      0x17e /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(new_op.o)
                                         0x7e2 (size before relaxing)
- .debug_str     0x000000000000a0aa      0x6fd /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(si_class_type_info.o)
+ .debug_str     0x000000000000a0c8      0x6fd /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(si_class_type_info.o)
                                         0x89a (size before relaxing)
- .debug_str     0x000000000000a7a7      0x312 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(tinfo.o)
+ .debug_str     0x000000000000a7c5      0x312 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(tinfo.o)
                                         0x54d (size before relaxing)
- .debug_str     0x000000000000aab9      0x189 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(bad_alloc.o)
+ .debug_str     0x000000000000aad7      0x189 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(bad_alloc.o)
                                         0x6d3 (size before relaxing)
- .debug_str     0x000000000000ac42      0x52d /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(class_type_info.o)
+ .debug_str     0x000000000000ac60      0x52d /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(class_type_info.o)
                                         0xa14 (size before relaxing)
- .debug_str     0x000000000000b16f       0xfb /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(del_op.o)
+ .debug_str     0x000000000000b18d       0xfb /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(del_op.o)
                                         0x71b (size before relaxing)
- .debug_str     0x000000000000b26a      0x4ba /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(eh_alloc.o)
+ .debug_str     0x000000000000b288      0x4ba /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(eh_alloc.o)
                                         0xe6b (size before relaxing)
- .debug_str     0x000000000000b724      0x1e0 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(eh_call.o)
+ .debug_str     0x000000000000b742      0x1e0 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(eh_call.o)
                                         0xdff (size before relaxing)
- .debug_str     0x000000000000b904      0x1c8 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(eh_catch.o)
+ .debug_str     0x000000000000b922      0x1c8 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(eh_catch.o)
                                         0xb75 (size before relaxing)
- .debug_str     0x000000000000bacc      0x108 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(eh_term_handler.o)
+ .debug_str     0x000000000000baea      0x108 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(eh_term_handler.o)
                                         0x7a0 (size before relaxing)
- .debug_str     0x000000000000bbd4      0x223 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(eh_throw.o)
+ .debug_str     0x000000000000bbf2      0x223 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(eh_throw.o)
                                         0xb42 (size before relaxing)
- .debug_str     0x000000000000bdf7      0x171 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(new_handler.o)
+ .debug_str     0x000000000000be15      0x171 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(new_handler.o)
                                         0x6aa (size before relaxing)
- .debug_str     0x000000000000bf68      0x112 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-abort.o)
+ .debug_str     0x000000000000bf86      0x112 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-abort.o)
                                         0x1ad (size before relaxing)
- .debug_str     0x000000000000c07a       0x78 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-atexit.o)
+ .debug_str     0x000000000000c098       0x78 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-atexit.o)
                                         0x1e7 (size before relaxing)
- .debug_str     0x000000000000c0f2       0xc1 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-fini.o)
+ .debug_str     0x000000000000c110       0xc1 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-fini.o)
                                         0x1df (size before relaxing)
- .debug_str     0x000000000000c1b3      0x415 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-impure.o)
+ .debug_str     0x000000000000c1d1      0x415 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-impure.o)
                                         0x585 (size before relaxing)
- .debug_str     0x000000000000c5c8       0x96 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-init.o)
+ .debug_str     0x000000000000c5e6       0x96 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-init.o)
                                         0x209 (size before relaxing)
- .debug_str     0x000000000000c65e       0x52 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-malloc.o)
+ .debug_str     0x000000000000c67c       0x52 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-malloc.o)
                                         0x599 (size before relaxing)
- .debug_str     0x000000000000c6b0      0x207 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-mallocr.o)
+ .debug_str     0x000000000000c6ce      0x207 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-mallocr.o)
                                         0x78a (size before relaxing)
- .debug_str     0x000000000000c8b7       0xb1 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-memcpy.o)
- .debug_str     0x000000000000c968       0xa5 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-memset.o)
+ .debug_str     0x000000000000c8d5       0xb1 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-memcpy.o)
+ .debug_str     0x000000000000c986       0xa5 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-memset.o)
                                         0x1be (size before relaxing)
- .debug_str     0x000000000000ca0d       0x4c /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-mlock.o)
+ .debug_str     0x000000000000ca2b       0x4c /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-mlock.o)
                                         0x592 (size before relaxing)
- .debug_str     0x000000000000ca59       0x3d /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-sbrkr.o)
+ .debug_str     0x000000000000ca77       0x3d /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-sbrkr.o)
                                         0x57c (size before relaxing)
- .debug_str     0x000000000000ca96       0xf7 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-signal.o)
+ .debug_str     0x000000000000cab4       0xf7 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-signal.o)
                                         0x5f4 (size before relaxing)
- .debug_str     0x000000000000cb8d       0x42 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-signalr.o)
+ .debug_str     0x000000000000cbab       0x42 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-signalr.o)
                                         0x581 (size before relaxing)
- .debug_str     0x000000000000cbcf       0x42 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-strcmp.o)
+ .debug_str     0x000000000000cbed       0x42 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-strcmp.o)
                                          0xb0 (size before relaxing)
- .debug_str     0x000000000000cc11       0x36 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-__atexit.o)
+ .debug_str     0x000000000000cc2f       0x36 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-__atexit.o)
                                         0x5bf (size before relaxing)
- .debug_str     0x000000000000cc47       0x8d /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-__call_atexit.o)
+ .debug_str     0x000000000000cc65       0x8d /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-__call_atexit.o)
                                         0x5eb (size before relaxing)
- .debug_str     0x000000000000ccd4       0x34 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-freer.o)
+ .debug_str     0x000000000000ccf2       0x34 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-freer.o)
                                         0x6d4 (size before relaxing)
- .debug_str     0x000000000000cd08       0x5e /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-reent.o)
+ .debug_str     0x000000000000cd26       0x5e /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libc.a(lib_a-reent.o)
                                         0x5a4 (size before relaxing)
- .debug_str     0x000000000000cd66      0x714 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+dp/hard/libgcc.a(unwind-arm.o)
+ .debug_str     0x000000000000cd84      0x714 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+dp/hard/libgcc.a(unwind-arm.o)
                                         0xc47 (size before relaxing)
- .debug_str     0x000000000000d47a       0x30 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+dp/hard/libgcc.a(libunwind.o)
+ .debug_str     0x000000000000d498       0x30 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+dp/hard/libgcc.a(libunwind.o)
                                          0xaa (size before relaxing)
- .debug_str     0x000000000000d4aa       0x61 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+dp/hard/libgcc.a(pr-support.o)
+ .debug_str     0x000000000000d4c8       0x61 /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+dp/hard/libgcc.a(pr-support.o)
                                         0x569 (size before relaxing)
- .debug_str     0x000000000000d50b       0xef /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libnosys.a(getpid.o)
+ .debug_str     0x000000000000d529       0xef /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libnosys.a(getpid.o)
                                         0x192 (size before relaxing)
- .debug_str     0x000000000000d5fa       0x2e /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libnosys.a(kill.o)
+ .debug_str     0x000000000000d618       0x2e /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libnosys.a(kill.o)
                                         0x18e (size before relaxing)
- .debug_str     0x000000000000d628       0x3c /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libnosys.a(sbrk.o)
+ .debug_str     0x000000000000d646       0x3c /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libnosys.a(sbrk.o)
                                         0x114 (size before relaxing)
- .debug_str     0x000000000000d664       0x2f /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libnosys.a(_exit.o)
+ .debug_str     0x000000000000d682       0x2f /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libnosys.a(_exit.o)
                                         0x184 (size before relaxing)
 
 .debug_frame    0x0000000000000000     0x47f0
@@ -4974,10 +5020,12 @@ HAL_TIM_Base_Init                                 build/stm32h7xx_hal_tim.o
 HAL_TIM_Base_MspDeInit                            build/stm32h7xx_hal_msp.o
 HAL_TIM_Base_MspInit                              build/stm32h7xx_hal_msp.o
 HAL_TIM_Base_Start                                build/stm32h7xx_hal_tim.o
+                                                  build/motorControl.o
 HAL_TIM_Base_Start_DMA                            build/stm32h7xx_hal_tim.o
 HAL_TIM_Base_Start_IT                             build/stm32h7xx_hal_tim.o
                                                   build/stm32h7xx_hal_timebase_tim.o
 HAL_TIM_Base_Stop                                 build/stm32h7xx_hal_tim.o
+                                                  build/motorControl.o
 HAL_TIM_Base_Stop_DMA                             build/stm32h7xx_hal_tim.o
 HAL_TIM_Base_Stop_IT                              build/stm32h7xx_hal_tim.o
 HAL_TIM_ConfigClockSource                         build/stm32h7xx_hal_tim.o
@@ -5137,6 +5185,12 @@ STM32LED::LED::LED(GPIO_TypeDef*, unsigned short) build/LED.o
 STM32LED::LED::set(STM32LED::state)               build/LED.o
 STM32LED::LED::toggle()                           build/LED.o
                                                   build/main.o
+STM32_motorControl::motorControl::adjust_timer_frequency(unsigned short) build/motorControl.o
+STM32_motorControl::motorControl::calculate_timer_frequency(unsigned short) build/motorControl.o
+STM32_motorControl::motorControl::motorControl(GPIO_TypeDef*, unsigned short, TIM_HandleTypeDef*) build/motorControl.o
+STM32_motorControl::motorControl::motorControl(GPIO_TypeDef*, unsigned short, TIM_HandleTypeDef*) build/motorControl.o
+STM32_motorControl::motorControl::timer_start()   build/motorControl.o
+STM32_motorControl::motorControl::timer_stop()    build/motorControl.o
 SVC_Handler                                       build/port.o
 SWPMI1_IRQHandler                                 build/startup_stm32h733xx.o
 StartDefaultTask(void*)                           build/main.o
@@ -5264,6 +5318,7 @@ __aeabi_unwind_cpp_pr1                            /usr/lib/gcc/arm-none-eabi/10.
                                                   /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/libstdc++.a(eh_personality.o)
                                                   build/main.o
                                                   build/LED.o
+                                                  build/motorControl.o
 __aeabi_unwind_cpp_pr2                            /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+dp/hard/libgcc.a(unwind-arm.o)
 __bss_end__                                       /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/crt0.o
 __bss_start__                                     /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard/crt0.o
