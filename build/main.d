@@ -38,7 +38,7 @@ build/main.o: Core/Src/main.cpp Core/Inc/main.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
  Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
- Modules/inc/LED.h
+ Modules/inc/LED.h Modules/inc/motorControl.h
 Core/Inc/main.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
 Core/Inc/stm32h7xx_hal_conf.h:
@@ -82,3 +82,4 @@ Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
 Modules/inc/LED.h:
+Modules/inc/motorControl.h:

@@ -30,8 +30,11 @@ namespace STM32_motorControl
             const uint16_t motorSteps = 200; //Number of steps per revolution; defined by the hardware stepper motor driver
             uint32_t timer_freq;
             TIM_HandleTypeDef*   htim_handle; //Hardware timer handle
+            const uint32_t clk_freq = 1000000; //set clk frequency
 
     };
+
+    extern motorControl* motorC1;
 
 
 }

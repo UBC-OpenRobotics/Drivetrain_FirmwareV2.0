@@ -18,11 +18,13 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+/* shouldn't we also include cmsis_os2.h? */
 #include "cmsis_os.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "LED.h"
+#include "motorControl.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -44,6 +46,7 @@
 
 TIM_HandleTypeDef htim2;
 
+
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
@@ -51,6 +54,20 @@ const osThreadAttr_t defaultTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+
+/* Definitions for motorControlTask */
+osThreadId_t motorControlTaskHandle;
+// Is const needed?
+const osThreadAttr_t motorControlTask_attributes = {
+  .name = "motorControlTask",
+  /* Not sure the stack size I should use, so I used same as
+  default task */
+  .stack_size = 128 * 4,
+  /* Not sure which priority to set, so using the same as 
+  default for now */
+  .priority = (osPriority_t) osPriorityNormal,
+};
+
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -77,9 +94,17 @@ void StartDefaultTask(void *argument);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
+
+  /* LED objects */
   STM32LED::LED1= new STM32LED::LED(GPIOB, GPIO_PIN_0);
   STM32LED::LED2= new STM32LED::LED(GPIOE, GPIO_PIN_1);
   STM32LED::LED3= new STM32LED::LED(GPIOB, GPIO_PIN_14);
+
+  /* motorControl object(s) */
+  STM32_motorControl::motorC1 = new STM32_motorControl::motorControl(GPIOA , GPIO_PIN_0 , &htim2);
+  STM32_motorControl::motorC1 -> calculate_timer_frequency(100);
+  STM32_motorControl::motorC1 -> adjust_timer_frequency(1000);
+  STM32_motorControl::motorC1 -> timer_start();
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -127,7 +152,7 @@ int main(void)
   /* Create the thread(s) */
   /* creation of defaultTask */
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
-
+  // motorControlTaskHandle = osThreadNew(, NULL, &motorControlTask_attributes);
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -337,6 +362,7 @@ void StartDefaultTask(void *argument)
   }
   /* USER CODE END 5 */
 }
+
 
 /**
   * @brief  Period elapsed callback in non blocking mode
