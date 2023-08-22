@@ -102,9 +102,7 @@ int main(void)
 
   /* motorControl object(s) */
   STM32_motorControl::motorC1 = new STM32_motorControl::motorControl(GPIOA , GPIO_PIN_0 , &htim2);
-  STM32_motorControl::motorC1 -> calculate_timer_frequency(100);
-  STM32_motorControl::motorC1 -> adjust_timer_frequency(1000);
-  STM32_motorControl::motorC1 -> timer_start();
+
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -132,6 +130,19 @@ int main(void)
 
   /* Init scheduler */
   osKernelInitialize();
+
+  /* These lines of code calculates the timer frequency, then adjusts the 
+  auto-reload and then starts the timer
+  Arbitrary RPM value of 500 */
+  STM32_motorControl::motorC1 -> calculate_timer_frequency(500);
+  STM32_motorControl::motorC1 -> adjust_timer_frequency();
+  STM32_motorControl::motorC1 -> timer_start();
+
+  /* These two lines of code were used for trial and error purposes
+  to find the prescaler that makes the clk freq roughly 1 MHz */
+
+  //__HAL_TIM_SET_AUTORELOAD(&htim2, 500);
+  // HAL_TIM_Base_Start(&htim2);
 
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
@@ -252,8 +263,10 @@ static void MX_TIM2_Init(void)
   /* USER CODE BEGIN TIM2_Init 1 */
 
   /* USER CODE END TIM2_Init 1 */
+
+  /* Prescaler of 30 gets roughly a 1 MHz for some reason  */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 400;
+  htim2.Init.Prescaler = 30;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 1000;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -352,12 +365,12 @@ void StartDefaultTask(void *argument)
   for(;;)
   {
     STM32LED:: LED1 -> toggle();
-    osDelay(5);
-    __HAL_TIM_SET_AUTORELOAD(&htim2, 1);
-    STM32LED:: LED2 -> toggle();
-    osDelay(5);
-    STM32LED:: LED3 -> toggle();
-    __HAL_TIM_SET_AUTORELOAD(&htim2, 1000);
+    // osDelay(5);
+    // __HAL_TIM_SET_AUTORELOAD(&htim2, 1);
+    // STM32LED:: LED2 -> toggle();
+    // osDelay(5);
+    // STM32LED:: LED3 -> toggle();
+    // __HAL_TIM_SET_AUTORELOAD(&htim2, 1000);
     osDelay(5);
   }
   /* USER CODE END 5 */

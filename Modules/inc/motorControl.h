@@ -23,7 +23,7 @@ namespace STM32_motorControl
 
             void timer_start();
             void timer_stop();
-            void adjust_timer_frequency(uint16_t freqHz);
+            void adjust_timer_frequency();
             void calculate_timer_frequency(uint16_t motor_rpm);
 
         protected:  

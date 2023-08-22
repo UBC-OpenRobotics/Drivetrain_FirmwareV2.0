@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccuB8yCG.s 			page 1
+ARM GAS  /tmp/ccbgbwgu.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -34,7 +34,7 @@ ARM GAS  /tmp/ccuB8yCG.s 			page 1
    3:Modules/src/motorControl.cpp **** namespace STM32_motorControl
    4:Modules/src/motorControl.cpp **** {   
    5:Modules/src/motorControl.cpp ****     motorControl* motorC1;
-   6:Modules/src/motorControl.cpp ****     
+   6:Modules/src/motorControl.cpp **** 
    7:Modules/src/motorControl.cpp ****     //Constructor 
    8:Modules/src/motorControl.cpp ****     motorControl::motorControl(GPIO_TypeDef* gpio_port, uint16_t gpio_pin, TIM_HandleTypeDef* htim_
   30              		.loc 1 8 5 view -0
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccuB8yCG.s 			page 1
   46              		.loc 1 10 9 is_stmt 1 view .LVU3
   47              		.loc 1 10 29 is_stmt 0 view .LVU4
   48 000a 0160     		str	r1, [r0]
-ARM GAS  /tmp/ccuB8yCG.s 			page 2
+ARM GAS  /tmp/ccbgbwgu.s 			page 2
 
 
   11:Modules/src/motorControl.cpp ****         this -> motorC_pin = gpio_pin;
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccuB8yCG.s 			page 1
   97              		.loc 1 18 27 is_stmt 0 view .LVU13
   98 0002 C068     		ldr	r0, [r0, #12]
   99              	.LVL2:
-ARM GAS  /tmp/ccuB8yCG.s 			page 3
+ARM GAS  /tmp/ccbgbwgu.s 			page 3
 
 
  100              		.loc 1 18 27 view .LVU14
@@ -169,48 +169,48 @@ ARM GAS  /tmp/ccuB8yCG.s 			page 1
  141              		.cfi_endproc
  142              	.LFE1256:
  143              		.fnend
- 145              		.section	.text._ZN18STM32_motorControl12motorControl22adjust_timer_frequencyEt,"ax",%progbits
+ 145              		.section	.text._ZN18STM32_motorControl12motorControl22adjust_timer_frequencyEv,"ax",%progbits
  146              		.align	1
- 147              		.global	_ZN18STM32_motorControl12motorControl22adjust_timer_frequencyEt
+ 147              		.global	_ZN18STM32_motorControl12motorControl22adjust_timer_frequencyEv
  148              		.syntax unified
  149              		.thumb
  150              		.thumb_func
  151              		.fpu fpv5-d16
- 153              	_ZN18STM32_motorControl12motorControl22adjust_timer_frequencyEt:
+ 153              	_ZN18STM32_motorControl12motorControl22adjust_timer_frequencyEv:
  154              		.fnstart
-ARM GAS  /tmp/ccuB8yCG.s 			page 4
+ARM GAS  /tmp/ccbgbwgu.s 			page 4
 
 
  155              	.LVL7:
  156              	.LFB1257:
   25:Modules/src/motorControl.cpp **** 
   26:Modules/src/motorControl.cpp ****     
-  27:Modules/src/motorControl.cpp ****     void motorControl::adjust_timer_frequency(uint16_t freqHz)
+  27:Modules/src/motorControl.cpp ****     void motorControl::adjust_timer_frequency()
   28:Modules/src/motorControl.cpp ****     {
  157              		.loc 1 28 5 is_stmt 1 view -0
  158              		.cfi_startproc
  159              		@ args = 0, pretend = 0, frame = 0
  160              		@ frame_needed = 0, uses_anonymous_args = 0
  161              		@ link register save eliminated.
-  29:Modules/src/motorControl.cpp ****         uint16_t timer_reload_count = this -> clk_freq / freqHz;
+  29:Modules/src/motorControl.cpp ****         uint32_t timer_reload_count = this -> clk_freq / this -> timer_freq;
  162              		.loc 1 29 9 view .LVU23
  163              		.loc 1 29 47 is_stmt 0 view .LVU24
  164 0000 0369     		ldr	r3, [r0, #16]
- 165              		.loc 1 29 56 view .LVU25
- 166 0002 B3FBF1F1 		udiv	r1, r3, r1
- 167              	.LVL8:
+ 165              		.loc 1 29 66 view .LVU25
+ 166 0002 8268     		ldr	r2, [r0, #8]
+ 167              		.loc 1 29 18 view .LVU26
+ 168 0004 B3FBF2F3 		udiv	r3, r3, r2
+ 169              	.LVL8:
   30:Modules/src/motorControl.cpp ****         //Calcualte the reload value based on the frequency parameter.
   31:Modules/src/motorControl.cpp ****         __HAL_TIM_SET_AUTORELOAD(this -> htim_handle, timer_reload_count);
- 168              		.loc 1 31 9 is_stmt 1 view .LVU26
- 169              		.loc 1 31 9 view .LVU27
- 170 0006 C368     		ldr	r3, [r0, #12]
- 171 0008 1B68     		ldr	r3, [r3]
- 172 000a 89B2     		uxth	r1, r1
- 173              		.loc 1 31 9 is_stmt 0 view .LVU28
- 174 000c D962     		str	r1, [r3, #44]
- 175              		.loc 1 31 9 is_stmt 1 view .LVU29
- 176 000e C368     		ldr	r3, [r0, #12]
- 177 0010 D960     		str	r1, [r3, #12]
+ 170              		.loc 1 31 9 is_stmt 1 view .LVU27
+ 171              		.loc 1 31 9 view .LVU28
+ 172 0008 C268     		ldr	r2, [r0, #12]
+ 173 000a 1268     		ldr	r2, [r2]
+ 174 000c D362     		str	r3, [r2, #44]
+ 175              		.loc 1 31 9 view .LVU29
+ 176 000e C268     		ldr	r2, [r0, #12]
+ 177 0010 D360     		str	r3, [r2, #12]
   32:Modules/src/motorControl.cpp ****     }
  178              		.loc 1 32 5 is_stmt 0 view .LVU30
  179 0012 7047     		bx	lr
@@ -231,82 +231,97 @@ ARM GAS  /tmp/ccuB8yCG.s 			page 1
  196              	.LFB1258:
   33:Modules/src/motorControl.cpp **** 
   34:Modules/src/motorControl.cpp **** 
-  35:Modules/src/motorControl.cpp ****     void motorControl::calculate_timer_frequency(uint16_t motor_rpm = 100)
+  35:Modules/src/motorControl.cpp ****     void motorControl::calculate_timer_frequency(uint16_t motor_rpm)
   36:Modules/src/motorControl.cpp ****     {
  197              		.loc 1 36 5 is_stmt 1 view -0
  198              		.cfi_startproc
  199              		@ args = 0, pretend = 0, frame = 0
  200              		@ frame_needed = 0, uses_anonymous_args = 0
  201              		@ link register save eliminated.
-ARM GAS  /tmp/ccuB8yCG.s 			page 5
+ARM GAS  /tmp/ccbgbwgu.s 			page 5
 
 
-  37:Modules/src/motorControl.cpp ****         this -> timer_freq = motor_rpm*this -> motorSteps*(1/60);
+  37:Modules/src/motorControl.cpp ****         this -> timer_freq = motor_rpm*(this -> motorSteps) / (60);
  202              		.loc 1 37 9 view .LVU32
- 203              		.loc 1 37 28 is_stmt 0 view .LVU33
- 204 0000 0023     		movs	r3, #0
- 205 0002 8360     		str	r3, [r0, #8]
+ 203              		.loc 1 37 49 is_stmt 0 view .LVU33
+ 204 0000 C388     		ldrh	r3, [r0, #6]
+ 205              		.loc 1 37 39 view .LVU34
+ 206 0002 03FB01F1 		mul	r1, r3, r1
+ 207              	.LVL10:
+ 208              		.loc 1 37 61 view .LVU35
+ 209 0006 044B     		ldr	r3, .L11
+ 210 0008 83FB0123 		smull	r2, r3, r3, r1
+ 211 000c 0B44     		add	r3, r3, r1
+ 212 000e C917     		asrs	r1, r1, #31
+ 213 0010 C1EB6311 		rsb	r1, r1, r3, asr #5
+ 214              		.loc 1 37 28 view .LVU36
+ 215 0014 8160     		str	r1, [r0, #8]
   38:Modules/src/motorControl.cpp ****     }
- 206              		.loc 1 38 5 view .LVU34
- 207 0004 7047     		bx	lr
- 208              		.cfi_endproc
- 209              	.LFE1258:
- 210              		.cantunwind
- 211              		.fnend
- 213              		.global	_ZN18STM32_motorControl7motorC1E
- 214              		.section	.bss._ZN18STM32_motorControl7motorC1E,"aw",%nobits
- 215              		.align	2
- 218              	_ZN18STM32_motorControl7motorC1E:
- 219 0000 00000000 		.space	4
- 220              		.text
- 221              	.Letext0:
- 222              		.file 2 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
- 223              		.file 3 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h733xx.h"
- 224              		.file 4 "/usr/include/newlib/c++/10.3.1/cmath"
- 225              		.file 5 "/usr/include/newlib/c++/10.3.1/type_traits"
- 226              		.file 6 "/usr/include/newlib/c++/10.3.1/concepts"
- 227              		.file 7 "/usr/include/newlib/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/c++config.h"
- 228              		.file 8 "/usr/include/newlib/c++/10.3.1/bits/iterator_concepts.h"
- 229              		.file 9 "/usr/include/newlib/c++/10.3.1/compare"
- 230              		.file 10 "/usr/include/newlib/c++/10.3.1/bits/exception_ptr.h"
- 231              		.file 11 "/usr/include/newlib/c++/10.3.1/debug/debug.h"
- 232              		.file 12 "/usr/include/newlib/c++/10.3.1/bits/std_abs.h"
- 233              		.file 13 "/usr/include/newlib/c++/10.3.1/bits/predefined_ops.h"
- 234              		.file 14 "/usr/include/newlib/math.h"
- 235              		.file 15 "/usr/include/newlib/c++/10.3.1/bits/ptr_traits.h"
- 236              		.file 16 "/usr/include/newlib/c++/10.3.1/math.h"
- 237              		.file 17 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
- 238              		.file 18 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h"
- 239              		.file 19 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h"
- 240              		.file 20 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
- 241              		.file 21 "Modules/inc/motorControl.h"
- 242              		.file 22 "<built-in>"
-ARM GAS  /tmp/ccuB8yCG.s 			page 6
+ 216              		.loc 1 38 5 view .LVU37
+ 217 0016 7047     		bx	lr
+ 218              	.L12:
+ 219              		.align	2
+ 220              	.L11:
+ 221 0018 89888888 		.word	-2004318071
+ 222              		.cfi_endproc
+ 223              	.LFE1258:
+ 224              		.cantunwind
+ 225              		.fnend
+ 227              		.global	_ZN18STM32_motorControl7motorC1E
+ 228              		.section	.bss._ZN18STM32_motorControl7motorC1E,"aw",%nobits
+ 229              		.align	2
+ 232              	_ZN18STM32_motorControl7motorC1E:
+ 233 0000 00000000 		.space	4
+ 234              		.text
+ 235              	.Letext0:
+ 236              		.file 2 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
+ 237              		.file 3 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h733xx.h"
+ 238              		.file 4 "/usr/include/newlib/c++/10.3.1/cmath"
+ 239              		.file 5 "/usr/include/newlib/c++/10.3.1/type_traits"
+ 240              		.file 6 "/usr/include/newlib/c++/10.3.1/concepts"
+ 241              		.file 7 "/usr/include/newlib/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/c++config.h"
+ 242              		.file 8 "/usr/include/newlib/c++/10.3.1/bits/iterator_concepts.h"
+ 243              		.file 9 "/usr/include/newlib/c++/10.3.1/compare"
+ 244              		.file 10 "/usr/include/newlib/c++/10.3.1/bits/exception_ptr.h"
+ 245              		.file 11 "/usr/include/newlib/c++/10.3.1/debug/debug.h"
+ 246              		.file 12 "/usr/include/newlib/c++/10.3.1/bits/std_abs.h"
+ 247              		.file 13 "/usr/include/newlib/c++/10.3.1/bits/predefined_ops.h"
+ 248              		.file 14 "/usr/include/newlib/math.h"
+ 249              		.file 15 "/usr/include/newlib/c++/10.3.1/bits/ptr_traits.h"
+ 250              		.file 16 "/usr/include/newlib/c++/10.3.1/math.h"
+ 251              		.file 17 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
+ 252              		.file 18 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h"
+ 253              		.file 19 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h"
+ 254              		.file 20 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
+ 255              		.file 21 "Modules/inc/motorControl.h"
+ 256              		.file 22 "<built-in>"
+ARM GAS  /tmp/ccbgbwgu.s 			page 6
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 motorControl.cpp
-     /tmp/ccuB8yCG.s:17     .text._ZN18STM32_motorControl12motorControlC2EP12GPIO_TypeDeftP17TIM_HandleTypeDef:0000000000000000 $t
-     /tmp/ccuB8yCG.s:25     .text._ZN18STM32_motorControl12motorControlC2EP12GPIO_TypeDeftP17TIM_HandleTypeDef:0000000000000000 _ZN18STM32_motorControl12motorControlC2EP12GPIO_TypeDeftP17TIM_HandleTypeDef
-     /tmp/ccuB8yCG.s:65     .text._ZN18STM32_motorControl12motorControlC2EP12GPIO_TypeDeftP17TIM_HandleTypeDef:0000000000000018 $d
+     /tmp/ccbgbwgu.s:17     .text._ZN18STM32_motorControl12motorControlC2EP12GPIO_TypeDeftP17TIM_HandleTypeDef:0000000000000000 $t
+     /tmp/ccbgbwgu.s:25     .text._ZN18STM32_motorControl12motorControlC2EP12GPIO_TypeDeftP17TIM_HandleTypeDef:0000000000000000 _ZN18STM32_motorControl12motorControlC2EP12GPIO_TypeDeftP17TIM_HandleTypeDef
+     /tmp/ccbgbwgu.s:65     .text._ZN18STM32_motorControl12motorControlC2EP12GPIO_TypeDeftP17TIM_HandleTypeDef:0000000000000018 $d
 .ARM.exidx.text._ZN18STM32_motorControl12motorControlC2EP12GPIO_TypeDeftP17TIM_HandleTypeDef:0000000000000000 $d
-     /tmp/ccuB8yCG.s:25     .text._ZN18STM32_motorControl12motorControlC2EP12GPIO_TypeDeftP17TIM_HandleTypeDef:0000000000000000 _ZN18STM32_motorControl12motorControlC1EP12GPIO_TypeDeftP17TIM_HandleTypeDef
-     /tmp/ccuB8yCG.s:74     .text._ZN18STM32_motorControl12motorControl11timer_startEv:0000000000000000 $t
-     /tmp/ccuB8yCG.s:81     .text._ZN18STM32_motorControl12motorControl11timer_startEv:0000000000000000 _ZN18STM32_motorControl12motorControl11timer_startEv
+     /tmp/ccbgbwgu.s:25     .text._ZN18STM32_motorControl12motorControlC2EP12GPIO_TypeDeftP17TIM_HandleTypeDef:0000000000000000 _ZN18STM32_motorControl12motorControlC1EP12GPIO_TypeDeftP17TIM_HandleTypeDef
+     /tmp/ccbgbwgu.s:74     .text._ZN18STM32_motorControl12motorControl11timer_startEv:0000000000000000 $t
+     /tmp/ccbgbwgu.s:81     .text._ZN18STM32_motorControl12motorControl11timer_startEv:0000000000000000 _ZN18STM32_motorControl12motorControl11timer_startEv
 .ARM.extab.text._ZN18STM32_motorControl12motorControl11timer_startEv:0000000000000000 $d
 .ARM.exidx.text._ZN18STM32_motorControl12motorControl11timer_startEv:0000000000000000 $d
-     /tmp/ccuB8yCG.s:110    .text._ZN18STM32_motorControl12motorControl10timer_stopEv:0000000000000000 $t
-     /tmp/ccuB8yCG.s:117    .text._ZN18STM32_motorControl12motorControl10timer_stopEv:0000000000000000 _ZN18STM32_motorControl12motorControl10timer_stopEv
+     /tmp/ccbgbwgu.s:110    .text._ZN18STM32_motorControl12motorControl10timer_stopEv:0000000000000000 $t
+     /tmp/ccbgbwgu.s:117    .text._ZN18STM32_motorControl12motorControl10timer_stopEv:0000000000000000 _ZN18STM32_motorControl12motorControl10timer_stopEv
 .ARM.extab.text._ZN18STM32_motorControl12motorControl10timer_stopEv:0000000000000000 $d
 .ARM.exidx.text._ZN18STM32_motorControl12motorControl10timer_stopEv:0000000000000000 $d
-     /tmp/ccuB8yCG.s:146    .text._ZN18STM32_motorControl12motorControl22adjust_timer_frequencyEt:0000000000000000 $t
-     /tmp/ccuB8yCG.s:153    .text._ZN18STM32_motorControl12motorControl22adjust_timer_frequencyEt:0000000000000000 _ZN18STM32_motorControl12motorControl22adjust_timer_frequencyEt
-.ARM.exidx.text._ZN18STM32_motorControl12motorControl22adjust_timer_frequencyEt:0000000000000000 $d
-     /tmp/ccuB8yCG.s:186    .text._ZN18STM32_motorControl12motorControl25calculate_timer_frequencyEt:0000000000000000 $t
-     /tmp/ccuB8yCG.s:193    .text._ZN18STM32_motorControl12motorControl25calculate_timer_frequencyEt:0000000000000000 _ZN18STM32_motorControl12motorControl25calculate_timer_frequencyEt
+     /tmp/ccbgbwgu.s:146    .text._ZN18STM32_motorControl12motorControl22adjust_timer_frequencyEv:0000000000000000 $t
+     /tmp/ccbgbwgu.s:153    .text._ZN18STM32_motorControl12motorControl22adjust_timer_frequencyEv:0000000000000000 _ZN18STM32_motorControl12motorControl22adjust_timer_frequencyEv
+.ARM.exidx.text._ZN18STM32_motorControl12motorControl22adjust_timer_frequencyEv:0000000000000000 $d
+     /tmp/ccbgbwgu.s:186    .text._ZN18STM32_motorControl12motorControl25calculate_timer_frequencyEt:0000000000000000 $t
+     /tmp/ccbgbwgu.s:193    .text._ZN18STM32_motorControl12motorControl25calculate_timer_frequencyEt:0000000000000000 _ZN18STM32_motorControl12motorControl25calculate_timer_frequencyEt
+     /tmp/ccbgbwgu.s:221    .text._ZN18STM32_motorControl12motorControl25calculate_timer_frequencyEt:0000000000000018 $d
 .ARM.exidx.text._ZN18STM32_motorControl12motorControl25calculate_timer_frequencyEt:0000000000000000 $d
-     /tmp/ccuB8yCG.s:218    .bss._ZN18STM32_motorControl7motorC1E:0000000000000000 _ZN18STM32_motorControl7motorC1E
-     /tmp/ccuB8yCG.s:215    .bss._ZN18STM32_motorControl7motorC1E:0000000000000000 $d
+     /tmp/ccbgbwgu.s:232    .bss._ZN18STM32_motorControl7motorC1E:0000000000000000 _ZN18STM32_motorControl7motorC1E
+     /tmp/ccbgbwgu.s:229    .bss._ZN18STM32_motorControl7motorC1E:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 HAL_TIM_Base_Start
