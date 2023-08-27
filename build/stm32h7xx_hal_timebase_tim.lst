@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccRc40QT.s 			page 1
+ARM GAS  /tmp/ccYYUh4a.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccRc40QT.s 			page 1
   28:Core/Src/stm32h7xx_hal_timebase_tim.c **** TIM_HandleTypeDef        htim1;
   29:Core/Src/stm32h7xx_hal_timebase_tim.c **** /* Private function prototypes -----------------------------------------------*/
   30:Core/Src/stm32h7xx_hal_timebase_tim.c **** /* Private functions ---------------------------------------------------------*/
-ARM GAS  /tmp/ccRc40QT.s 			page 2
+ARM GAS  /tmp/ccYYUh4a.s 			page 2
 
 
   31:Core/Src/stm32h7xx_hal_timebase_tim.c **** 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccRc40QT.s 			page 1
   70:Core/Src/stm32h7xx_hal_timebase_tim.c **** 
   71:Core/Src/stm32h7xx_hal_timebase_tim.c ****   /* Compute the prescaler value to have TIM1 counter clock equal to 1MHz */
   72:Core/Src/stm32h7xx_hal_timebase_tim.c ****   uwPrescalerValue = (uint32_t) ((uwTimclock / 1000000U) - 1U);
-ARM GAS  /tmp/ccRc40QT.s 			page 3
+ARM GAS  /tmp/ccYYUh4a.s 			page 3
 
 
   73:Core/Src/stm32h7xx_hal_timebase_tim.c **** 
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccRc40QT.s 			page 1
   69              	.LVL5:
   55:Core/Src/stm32h7xx_hal_timebase_tim.c ****     }
   70              		.loc 1 55 5 view .LVU13
-ARM GAS  /tmp/ccRc40QT.s 			page 4
+ARM GAS  /tmp/ccYYUh4a.s 			page 4
 
 
   55:Core/Src/stm32h7xx_hal_timebase_tim.c ****     }
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccRc40QT.s 			page 1
  110 0052 013B     		subs	r3, r3, #1
  111              	.LVL10:
   75:Core/Src/stm32h7xx_hal_timebase_tim.c **** 
-ARM GAS  /tmp/ccRc40QT.s 			page 5
+ARM GAS  /tmp/ccYYUh4a.s 			page 5
 
 
  112              		.loc 1 75 3 is_stmt 1 view .LVU29
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccRc40QT.s 			page 1
  152              		.cfi_restore_state
   92:Core/Src/stm32h7xx_hal_timebase_tim.c ****   }
  153              		.loc 1 92 5 is_stmt 1 view .LVU45
-ARM GAS  /tmp/ccRc40QT.s 			page 6
+ARM GAS  /tmp/ccYYUh4a.s 			page 6
 
 
   92:Core/Src/stm32h7xx_hal_timebase_tim.c ****   }
@@ -313,7 +313,7 @@ ARM GAS  /tmp/ccRc40QT.s 			page 1
  162 007c 00000000 		.word	uwTickPrio
  163 0080 00440258 		.word	1476543488
  164 0084 83DE1B43 		.word	1125899907
- 165 0088 00000000 		.word	.LANCHOR0
+ 165 0088 00000000 		.word	htim1
  166 008c 00000140 		.word	1073807360
  167              		.cfi_endproc
  168              	.LFE144:
@@ -354,11 +354,11 @@ ARM GAS  /tmp/ccRc40QT.s 			page 1
  193              	.L15:
  194 000e 00BF     		.align	2
  195              	.L14:
- 196 0010 00000000 		.word	.LANCHOR0
+ 196 0010 00000000 		.word	htim1
  197              		.cfi_endproc
  198              	.LFE145:
  200              		.section	.text.HAL_ResumeTick,"ax",%progbits
-ARM GAS  /tmp/ccRc40QT.s 			page 7
+ARM GAS  /tmp/ccYYUh4a.s 			page 7
 
 
  201              		.align	1
@@ -397,48 +397,46 @@ ARM GAS  /tmp/ccRc40QT.s 			page 1
  223              	.L18:
  224 000e 00BF     		.align	2
  225              	.L17:
- 226 0010 00000000 		.word	.LANCHOR0
+ 226 0010 00000000 		.word	htim1
  227              		.cfi_endproc
  228              	.LFE146:
- 230              		.global	htim1
- 231              		.section	.bss.htim1,"aw",%nobits
- 232              		.align	2
- 233              		.set	.LANCHOR0,. + 0
- 236              	htim1:
- 237 0000 00000000 		.space	76
- 237      00000000 
- 237      00000000 
- 237      00000000 
- 237      00000000 
- 238              		.text
- 239              	.Letext0:
- 240              		.file 2 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
- 241              		.file 3 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h733xx.h"
- 242              		.file 4 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
- 243              		.file 5 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h"
- 244              		.file 6 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h"
- 245              		.file 7 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h"
-ARM GAS  /tmp/ccRc40QT.s 			page 8
+ 230              		.comm	htim1,76,4
+ 231              		.text
+ 232              	.Letext0:
+ 233              		.file 2 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h"
+ 234              		.file 3 "Drivers/CMSIS/Include/core_cm7.h"
+ 235              		.file 4 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h"
+ 236              		.file 5 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h733xx.h"
+ 237              		.file 6 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h"
+ 238              		.file 7 "/usr/include/newlib/sys/_types.h"
+ 239              		.file 8 "/usr/include/newlib/sys/reent.h"
+ 240              		.file 9 "/usr/include/newlib/sys/lock.h"
+ 241              		.file 10 "/usr/include/newlib/math.h"
+ 242              		.file 11 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
+ 243              		.file 12 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h"
+ 244              		.file 13 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h"
+ 245              		.file 14 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h"
+ 246              		.file 15 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h"
+ 247              		.file 16 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
+ARM GAS  /tmp/ccYYUh4a.s 			page 8
 
 
- 246              		.file 8 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
- 247              		.file 9 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cortex.h"
-ARM GAS  /tmp/ccRc40QT.s 			page 9
+ 248              		.file 17 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cortex.h"
+ARM GAS  /tmp/ccYYUh4a.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32h7xx_hal_timebase_tim.c
-     /tmp/ccRc40QT.s:17     .text.HAL_InitTick:0000000000000000 $t
-     /tmp/ccRc40QT.s:25     .text.HAL_InitTick:0000000000000000 HAL_InitTick
-     /tmp/ccRc40QT.s:162    .text.HAL_InitTick:000000000000007c $d
-     /tmp/ccRc40QT.s:171    .text.HAL_SuspendTick:0000000000000000 $t
-     /tmp/ccRc40QT.s:178    .text.HAL_SuspendTick:0000000000000000 HAL_SuspendTick
-     /tmp/ccRc40QT.s:196    .text.HAL_SuspendTick:0000000000000010 $d
-     /tmp/ccRc40QT.s:201    .text.HAL_ResumeTick:0000000000000000 $t
-     /tmp/ccRc40QT.s:208    .text.HAL_ResumeTick:0000000000000000 HAL_ResumeTick
-     /tmp/ccRc40QT.s:226    .text.HAL_ResumeTick:0000000000000010 $d
-     /tmp/ccRc40QT.s:236    .bss.htim1:0000000000000000 htim1
-     /tmp/ccRc40QT.s:232    .bss.htim1:0000000000000000 $d
+     /tmp/ccYYUh4a.s:17     .text.HAL_InitTick:0000000000000000 $t
+     /tmp/ccYYUh4a.s:25     .text.HAL_InitTick:0000000000000000 HAL_InitTick
+     /tmp/ccYYUh4a.s:162    .text.HAL_InitTick:000000000000007c $d
+                            *COM*:000000000000004c htim1
+     /tmp/ccYYUh4a.s:171    .text.HAL_SuspendTick:0000000000000000 $t
+     /tmp/ccYYUh4a.s:178    .text.HAL_SuspendTick:0000000000000000 HAL_SuspendTick
+     /tmp/ccYYUh4a.s:196    .text.HAL_SuspendTick:0000000000000010 $d
+     /tmp/ccYYUh4a.s:201    .text.HAL_ResumeTick:0000000000000000 $t
+     /tmp/ccYYUh4a.s:208    .text.HAL_ResumeTick:0000000000000000 HAL_ResumeTick
+     /tmp/ccYYUh4a.s:226    .text.HAL_ResumeTick:0000000000000010 $d
 
 UNDEFINED SYMBOLS
 HAL_NVIC_SetPriority

@@ -140,7 +140,7 @@ C_INCLUDES =  \
 -IMiddlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F \
 -IDrivers/CMSIS/Device/ST/STM32H7xx/Include \
 -IDrivers/CMSIS/Include \
--IModules/inc
+-IModules/Inc
 
 CXX_INCLUDES = $(C_INCLUDES)\
 -I/usr/arm-none-eabi/include/c++/11.2.0

@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccgR117f.s 			page 1
+ARM GAS  /tmp/cceDUAmg.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -17,7 +17,19 @@ ARM GAS  /tmp/ccgR117f.s 			page 1
   14              	.Ltext0:
   15              		.cfi_sections	.debug_frame
   16              	.Letext0:
-ARM GAS  /tmp/ccgR117f.s 			page 2
+  17              		.file 1 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h"
+  18              		.file 2 "Core/Inc/FreeRTOSConfig.h"
+  19              		.file 3 "Drivers/CMSIS/Include/core_cm7.h"
+  20              		.file 4 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h"
+  21              		.file 5 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h"
+  22              		.file 6 "/usr/include/newlib/sys/_types.h"
+  23              		.file 7 "/usr/include/newlib/sys/reent.h"
+  24              		.file 8 "/usr/include/newlib/sys/lock.h"
+  25              		.file 9 "/usr/include/newlib/math.h"
+  26              		.file 10 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
+  27              		.file 11 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h"
+  28              		.file 12 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
+ARM GAS  /tmp/cceDUAmg.s 			page 2
 
 
 DEFINED SYMBOLS
