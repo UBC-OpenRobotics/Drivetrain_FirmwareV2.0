@@ -8,18 +8,18 @@ have some importance*/
 #include "stm32h7xx_hal_tim.h"
 
 /* namespace and class defining for motorControl */
-namespace STM32_motorControl
+namespace STM32_motorcontrol
 {
-    class motorControl
+    class motorcontrol
     {
         public:
             /* Defining attributes/fields
             motorC = motor control */
-            GPIO_TypeDef* motorC_port;
-            uint16_t motorC_pin;
+            GPIO_TypeDef* motorc_port;
+            uint16_t motorc_pin;
 
             /* Contstuctor for port and pin assignment/definition */
-            motorControl(GPIO_TypeDef* gpio_port, uint16_t gpio_pin, TIM_HandleTypeDef* htim_handle);
+            motorcontrol(GPIO_TypeDef* gpio_port, uint16_t gpio_pin, TIM_HandleTypeDef* htim_handle);
 
             void timer_start();
             void timer_stop();
@@ -27,7 +27,7 @@ namespace STM32_motorControl
             void calculate_timer_frequency(uint16_t motor_rpm);
 
         protected:  
-            const uint16_t motorSteps = 200; //Number of steps per revolution; defined by the hardware stepper motor driver
+            const uint16_t motorsteps = 200; //Number of steps per revolution; defined by the hardware stepper motor driver
             uint32_t timer_freq;
             TIM_HandleTypeDef*   htim_handle; //Hardware timer handle
             const uint32_t clk_freq = 1000000; //set clk frequency

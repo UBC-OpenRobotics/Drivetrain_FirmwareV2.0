@@ -18,7 +18,6 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-/* shouldn't we also include cmsis_os2.h? */
 #include "cmsis_os.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -46,7 +45,6 @@
 
 TIM_HandleTypeDef htim2;
 
-
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
@@ -54,20 +52,6 @@ const osThreadAttr_t defaultTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
-
-/* Definitions for motorControlTask */
-osThreadId_t motorControlTaskHandle;
-// Is const needed?
-const osThreadAttr_t motorControlTask_attributes = {
-  .name = "motorControlTask",
-  /* Not sure the stack size I should use, so I used same as
-  default task */
-  .stack_size = 128 * 4,
-  /* Not sure which priority to set, so using the same as 
-  default for now */
-  .priority = (osPriority_t) osPriorityNormal,
-};
-
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -131,19 +115,6 @@ int main(void)
   /* Init scheduler */
   osKernelInitialize();
 
-  /* These lines of code calculates the timer frequency, then adjusts the 
-  auto-reload and then starts the timer
-  Arbitrary RPM value of 500 */
-  STM32_motorControl::motorC1 -> calculate_timer_frequency(500);
-  STM32_motorControl::motorC1 -> adjust_timer_frequency();
-  STM32_motorControl::motorC1 -> timer_start();
-
-  /* These two lines of code were used for trial and error purposes
-  to find the prescaler that makes the clk freq roughly 1 MHz */
-
-  //__HAL_TIM_SET_AUTORELOAD(&htim2, 500);
-  // HAL_TIM_Base_Start(&htim2);
-
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
   /* USER CODE END RTOS_MUTEX */
@@ -163,7 +134,7 @@ int main(void)
   /* Create the thread(s) */
   /* creation of defaultTask */
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
-  // motorControlTaskHandle = osThreadNew(, NULL, &motorControlTask_attributes);
+
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -208,13 +179,14 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
-  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.HSIState = RCC_HSI_DIV1;
+  RCC_OscInitStruct.HSICalibrationValue = 64;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-  RCC_OscInitStruct.PLL.PLLM = 8;
-  RCC_OscInitStruct.PLL.PLLN = 256;
-  RCC_OscInitStruct.PLL.PLLP = 2;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+  RCC_OscInitStruct.PLL.PLLM = 32;
+  RCC_OscInitStruct.PLL.PLLN = 200;
+  RCC_OscInitStruct.PLL.PLLP = 1;
   RCC_OscInitStruct.PLL.PLLQ = 2;
   RCC_OscInitStruct.PLL.PLLR = 2;
   RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_1;
@@ -263,10 +235,8 @@ static void MX_TIM2_Init(void)
   /* USER CODE BEGIN TIM2_Init 1 */
 
   /* USER CODE END TIM2_Init 1 */
-
-  /* Prescaler of 30 gets roughly a 1 MHz for some reason  */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 30;
+  htim2.Init.Prescaler = 400;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 1000;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -375,7 +345,6 @@ void StartDefaultTask(void *argument)
   }
   /* USER CODE END 5 */
 }
-
 
 /**
   * @brief  Period elapsed callback in non blocking mode
