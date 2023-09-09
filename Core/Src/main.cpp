@@ -85,7 +85,7 @@ int main(void)
   STM32LED::LED3= new STM32LED::LED(GPIOB, GPIO_PIN_14);
 
   /* motorControl object(s) */
-  STM32_motorControl::motorC1 = new STM32_motorControl::motorControl(GPIOA , GPIO_PIN_0 , &htim2);
+  STM32_motor_control::motorc1 = new STM32_motor_control::motor_control(GPIOA , GPIO_PIN_0 , &htim2);
 
   /* USER CODE END 1 */
 

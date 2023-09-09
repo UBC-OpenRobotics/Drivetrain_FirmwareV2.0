@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cc8DVXT5.s 			page 1
+ARM GAS  /tmp/cciGDgtG.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
   29:Core/Src/main.cpp **** /* Private typedef -----------------------------------------------------------*/
   30:Core/Src/main.cpp **** /* USER CODE BEGIN PTD */
   31:Core/Src/main.cpp **** 
-ARM GAS  /tmp/cc8DVXT5.s 			page 2
+ARM GAS  /tmp/cciGDgtG.s 			page 2
 
 
   32:Core/Src/main.cpp **** /* USER CODE END PTD */
@@ -117,8 +117,8 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
   85:Core/Src/main.cpp ****   STM32LED::LED3= new STM32LED::LED(GPIOB, GPIO_PIN_14);
   86:Core/Src/main.cpp **** 
   87:Core/Src/main.cpp ****   /* motorControl object(s) */
-  88:Core/Src/main.cpp ****   STM32_motorControl::motorC1 = new STM32_motorControl::motorControl(GPIOA , GPIO_PIN_0 , &htim2);
-ARM GAS  /tmp/cc8DVXT5.s 			page 3
+  88:Core/Src/main.cpp ****   STM32_motor_control::motorc1 = new STM32_motor_control::motor_control(GPIOA , GPIO_PIN_0 , &htim2
+ARM GAS  /tmp/cciGDgtG.s 			page 3
 
 
   89:Core/Src/main.cpp **** 
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  143:Core/Src/main.cpp ****   /* add events, ... */
  144:Core/Src/main.cpp ****   /* USER CODE END RTOS_EVENTS */
  145:Core/Src/main.cpp **** 
-ARM GAS  /tmp/cc8DVXT5.s 			page 4
+ARM GAS  /tmp/cciGDgtG.s 			page 4
 
 
  146:Core/Src/main.cpp ****   /* Start scheduler */
@@ -238,7 +238,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  200:Core/Src/main.cpp ****   /** Initializes the CPU, AHB and APB buses clocks
  201:Core/Src/main.cpp ****   */
  202:Core/Src/main.cpp ****   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-ARM GAS  /tmp/cc8DVXT5.s 			page 5
+ARM GAS  /tmp/cciGDgtG.s 			page 5
 
 
  203:Core/Src/main.cpp ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2
@@ -298,7 +298,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  257:Core/Src/main.cpp ****   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
  258:Core/Src/main.cpp ****   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
  259:Core/Src/main.cpp ****   if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
-ARM GAS  /tmp/cc8DVXT5.s 			page 6
+ARM GAS  /tmp/cciGDgtG.s 			page 6
 
 
  260:Core/Src/main.cpp ****   {
@@ -358,7 +358,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  289:Core/Src/main.cpp ****   /* GPIO Ports Clock Enable */
  290:Core/Src/main.cpp ****   __HAL_RCC_GPIOC_CLK_ENABLE();
   53              		.loc 1 290 3 is_stmt 1 view .LVU3
-ARM GAS  /tmp/cc8DVXT5.s 			page 7
+ARM GAS  /tmp/cciGDgtG.s 			page 7
 
 
   54              	.LBB4:
@@ -418,7 +418,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  105 006a 02F00202 		and	r2, r2, #2
  106 006e 0392     		str	r2, [sp, #12]
  107              		.loc 1 293 3 view .LVU22
-ARM GAS  /tmp/cc8DVXT5.s 			page 8
+ARM GAS  /tmp/cciGDgtG.s 			page 8
 
 
  108 0070 039A     		ldr	r2, [sp, #12]
@@ -478,7 +478,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  150 00ae 0794     		str	r4, [sp, #28]
  306:Core/Src/main.cpp ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
  151              		.loc 1 306 3 is_stmt 1 view .LVU38
-ARM GAS  /tmp/cc8DVXT5.s 			page 9
+ARM GAS  /tmp/cciGDgtG.s 			page 9
 
 
  152              		.loc 1 306 25 is_stmt 0 view .LVU39
@@ -538,7 +538,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  195              		.section	.text._Z16StartDefaultTaskPv,"ax",%progbits
  196              		.align	1
  197              		.global	_Z16StartDefaultTaskPv
-ARM GAS  /tmp/cc8DVXT5.s 			page 10
+ARM GAS  /tmp/cciGDgtG.s 			page 10
 
 
  198              		.syntax unified
@@ -598,7 +598,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  227              		.loc 1 344 5 is_stmt 1 discriminator 1 view .LVU58
  228              		.loc 1 344 12 is_stmt 0 discriminator 1 view .LVU59
  229 000a 0520     		movs	r0, #5
-ARM GAS  /tmp/cc8DVXT5.s 			page 11
+ARM GAS  /tmp/cciGDgtG.s 			page 11
 
 
  230 000c FFF7FEFF 		bl	osDelay
@@ -658,7 +658,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  267 0002 0268     		ldr	r2, [r0]
  268              		.loc 1 362 3 view .LVU65
  269 0004 034B     		ldr	r3, .L14
-ARM GAS  /tmp/cc8DVXT5.s 			page 12
+ARM GAS  /tmp/cciGDgtG.s 			page 12
 
 
  270 0006 9A42     		cmp	r2, r3
@@ -718,7 +718,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  378:Core/Src/main.cpp ****   __disable_irq();
  309              		.loc 1 378 3 view .LVU71
  310              	.LBB9:
-ARM GAS  /tmp/cc8DVXT5.s 			page 13
+ARM GAS  /tmp/cciGDgtG.s 			page 13
 
 
  311              	.LBI9:
@@ -778,7 +778,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
   53:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __NO_RETURN                            __attribute__((__noreturn__))
   54:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
   55:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __USED
-ARM GAS  /tmp/cc8DVXT5.s 			page 14
+ARM GAS  /tmp/cciGDgtG.s 			page 14
 
 
   56:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __USED                                 __attribute__((used))
@@ -838,7 +838,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  110:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __ALIGNED
  111:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __ALIGNED(x)                           __attribute__((aligned(x)))
  112:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
-ARM GAS  /tmp/cc8DVXT5.s 			page 15
+ARM GAS  /tmp/cciGDgtG.s 			page 15
 
 
  113:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __RESTRICT
@@ -898,7 +898,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  167:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
  168:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  169:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef __INITIAL_SP
-ARM GAS  /tmp/cc8DVXT5.s 			page 16
+ARM GAS  /tmp/cciGDgtG.s 			page 16
 
 
  170:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __INITIAL_SP              __StackTop
@@ -958,7 +958,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  326              		.loc 1 379 3 discriminator 1 view .LVU75
  327 0002 FEE7     		b	.L17
  328              		.cfi_endproc
-ARM GAS  /tmp/cc8DVXT5.s 			page 17
+ARM GAS  /tmp/cciGDgtG.s 			page 17
 
 
  329              	.LFE1262:
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  377              		.loc 1 238 3 is_stmt 1 view .LVU83
  238:Core/Src/main.cpp ****   htim2.Init.Prescaler = 400;
  378              		.loc 1 238 18 is_stmt 0 view .LVU84
-ARM GAS  /tmp/cc8DVXT5.s 			page 18
+ARM GAS  /tmp/cciGDgtG.s 			page 18
 
 
  379 0022 2048     		ldr	r0, .L30
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  249:Core/Src/main.cpp ****   {
  416              		.loc 1 249 3 view .LVU102
  417 0052 F0B9     		cbnz	r0, .L26
-ARM GAS  /tmp/cc8DVXT5.s 			page 19
+ARM GAS  /tmp/cciGDgtG.s 			page 19
 
 
  253:Core/Src/main.cpp ****   {
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  267:Core/Src/main.cpp ****   {
  454              		.loc 1 267 3 is_stmt 1 view .LVU121
  267:Core/Src/main.cpp ****   {
-ARM GAS  /tmp/cc8DVXT5.s 			page 20
+ARM GAS  /tmp/cciGDgtG.s 			page 20
 
 
  455              		.loc 1 267 31 is_stmt 0 view .LVU122
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  269:Core/Src/main.cpp ****   }
  497              		.loc 1 269 5 is_stmt 1 view .LVU135
  269:Core/Src/main.cpp ****   }
-ARM GAS  /tmp/cc8DVXT5.s 			page 21
+ARM GAS  /tmp/cciGDgtG.s 			page 21
 
 
  498              		.loc 1 269 18 is_stmt 0 view .LVU136
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  171:Core/Src/main.cpp **** 
  548              		.loc 1 171 25 is_stmt 0 view .LVU143
  549 0018 0220     		movs	r0, #2
-ARM GAS  /tmp/cc8DVXT5.s 			page 22
+ARM GAS  /tmp/cciGDgtG.s 			page 22
 
 
  550 001a FFF7FEFF 		bl	HAL_PWREx_ConfigSupply
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  589 004a 0D92     		str	r2, [sp, #52]
  185:Core/Src/main.cpp ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
  590              		.loc 1 185 3 is_stmt 1 view .LVU159
-ARM GAS  /tmp/cc8DVXT5.s 			page 23
+ARM GAS  /tmp/cciGDgtG.s 			page 23
 
 
  185:Core/Src/main.cpp ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  195:Core/Src/main.cpp ****   {
  625              		.loc 1 195 24 is_stmt 0 view .LVU180
  626 0068 09A8     		add	r0, sp, #36
-ARM GAS  /tmp/cc8DVXT5.s 			page 24
+ARM GAS  /tmp/cciGDgtG.s 			page 24
 
 
  627 006a FFF7FEFF 		bl	HAL_RCC_OscConfig
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  662              		.loc 1 213 26 is_stmt 0 view .LVU199
  663 008e 0221     		movs	r1, #2
  664 0090 01A8     		add	r0, sp, #4
-ARM GAS  /tmp/cc8DVXT5.s 			page 25
+ARM GAS  /tmp/cciGDgtG.s 			page 25
 
 
  665 0092 FFF7FEFF 		bl	HAL_RCC_ClockConfig
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  714              		.cfi_def_cfa_offset 8
  715              		.cfi_offset 4, -8
  716              		.cfi_offset 14, -4
-ARM GAS  /tmp/cc8DVXT5.s 			page 26
+ARM GAS  /tmp/cciGDgtG.s 			page 26
 
 
   83:Core/Src/main.cpp ****   STM32LED::LED2= new STM32LED::LED(GPIOE, GPIO_PIN_1);
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  763              	.LVL35:
  764              	.LEHE5:
   85:Core/Src/main.cpp **** 
-ARM GAS  /tmp/cc8DVXT5.s 			page 27
+ARM GAS  /tmp/cciGDgtG.s 			page 27
 
 
  765              		.loc 1 85 17 discriminator 2 view .LVU215
@@ -1567,7 +1567,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
   88:Core/Src/main.cpp **** 
  768              		.loc 1 88 3 is_stmt 1 discriminator 2 view .LVU216
   88:Core/Src/main.cpp **** 
- 769              		.loc 1 88 97 is_stmt 0 discriminator 2 view .LVU217
+ 769              		.loc 1 88 100 is_stmt 0 discriminator 2 view .LVU217
  770 0040 1420     		movs	r0, #20
  771              	.LEHB6:
  772 0042 FFF7FEFF 		bl	_Znwj
@@ -1578,11 +1578,11 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  777 004a 0122     		movs	r2, #1
  778 004c 2049     		ldr	r1, .L52+24
  779              	.LEHB7:
- 780 004e FFF7FEFF 		bl	_ZN18STM32_motorControl12motorControlC1EP12GPIO_TypeDeftP17TIM_HandleTypeDef
+ 780 004e FFF7FEFF 		bl	_ZN19STM32_motor_control13motor_controlC1EP12GPIO_TypeDeftP17TIM_HandleTypeDef
  781              	.LVL37:
  782              	.LEHE7:
   88:Core/Src/main.cpp **** 
- 783              		.loc 1 88 31 discriminator 2 view .LVU218
+ 783              		.loc 1 88 32 discriminator 2 view .LVU218
  784 0052 204B     		ldr	r3, .L52+28
  785 0054 1C60     		str	r4, [r3]
   95:Core/Src/main.cpp **** 
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  806 0068 1848     		ldr	r0, .L52+20
  807 006a FFF7FEFF 		bl	HAL_TIM_OC_Start
  808              	.LVL42:
-ARM GAS  /tmp/cc8DVXT5.s 			page 28
+ARM GAS  /tmp/cciGDgtG.s 			page 28
 
 
  116:Core/Src/main.cpp **** 
@@ -1678,13 +1678,13 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  851 00a2 FFF7FEFF 		bl	_ZdlPvj
  852              	.LVL50:
  853 00a6 FFF7FEFF 		bl	__cxa_end_cleanup
-ARM GAS  /tmp/cc8DVXT5.s 			page 29
+ARM GAS  /tmp/cciGDgtG.s 			page 29
 
 
  854              	.LVL51:
  855              	.L50:
   88:Core/Src/main.cpp **** 
- 856              		.loc 1 88 97 view .LVU241
+ 856              		.loc 1 88 100 view .LVU241
  857 00aa 1421     		movs	r1, #20
  858 00ac 2046     		mov	r0, r4
  859 00ae FFF7FEFF 		bl	_ZdlPvj
@@ -1702,7 +1702,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  871 00c8 00000000 		.word	_ZN8STM32LED4LED3E
  872 00cc 00000000 		.word	.LANCHOR0
  873 00d0 00000258 		.word	1476526080
- 874 00d4 00000000 		.word	_ZN18STM32_motorControl7motorC1E
+ 874 00d4 00000000 		.word	_ZN19STM32_motor_control7motorc1E
  875 00d8 00000000 		.word	.LANCHOR1
  876 00dc 00000000 		.word	_Z16StartDefaultTaskPv
  877 00e0 00000000 		.word	.LANCHOR2
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  907 0020 00       		.uleb128 0
  908 0021 00       		.uleb128 0
  909 0022 38       		.uleb128 .LEHB5-.LFB1256
-ARM GAS  /tmp/cc8DVXT5.s 			page 30
+ARM GAS  /tmp/cciGDgtG.s 			page 30
 
 
  910 0023 04       		.uleb128 .LEHE5-.LEHB5
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  961              	.Letext0:
  962              		.file 3 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
  963              		.file 4 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h733xx.h"
-ARM GAS  /tmp/cc8DVXT5.s 			page 31
+ARM GAS  /tmp/cciGDgtG.s 			page 31
 
 
  964              		.file 5 "/usr/include/newlib/c++/10.3.1/cmath"
@@ -1828,48 +1828,48 @@ ARM GAS  /tmp/cc8DVXT5.s 			page 1
  988              		.file 29 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h"
  989              		.file 30 "/usr/include/newlib/c++/10.3.1/new"
  990              		.file 31 "<built-in>"
-ARM GAS  /tmp/cc8DVXT5.s 			page 32
+ARM GAS  /tmp/cciGDgtG.s 			page 32
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.cpp
-     /tmp/cc8DVXT5.s:17     .text._ZL12MX_GPIO_Initv:0000000000000000 $t
-     /tmp/cc8DVXT5.s:24     .text._ZL12MX_GPIO_Initv:0000000000000000 _ZL12MX_GPIO_Initv
-     /tmp/cc8DVXT5.s:188    .text._ZL12MX_GPIO_Initv:00000000000000d0 $d
+     /tmp/cciGDgtG.s:17     .text._ZL12MX_GPIO_Initv:0000000000000000 $t
+     /tmp/cciGDgtG.s:24     .text._ZL12MX_GPIO_Initv:0000000000000000 _ZL12MX_GPIO_Initv
+     /tmp/cciGDgtG.s:188    .text._ZL12MX_GPIO_Initv:00000000000000d0 $d
 .ARM.exidx.text._ZL12MX_GPIO_Initv:0000000000000000 $d
-     /tmp/cc8DVXT5.s:196    .text._Z16StartDefaultTaskPv:0000000000000000 $t
-     /tmp/cc8DVXT5.s:203    .text._Z16StartDefaultTaskPv:0000000000000000 _Z16StartDefaultTaskPv
-     /tmp/cc8DVXT5.s:237    .text._Z16StartDefaultTaskPv:0000000000000014 $d
+     /tmp/cciGDgtG.s:196    .text._Z16StartDefaultTaskPv:0000000000000000 $t
+     /tmp/cciGDgtG.s:203    .text._Z16StartDefaultTaskPv:0000000000000000 _Z16StartDefaultTaskPv
+     /tmp/cciGDgtG.s:237    .text._Z16StartDefaultTaskPv:0000000000000014 $d
 .ARM.extab.text._Z16StartDefaultTaskPv:0000000000000000 $d
 .ARM.exidx.text._Z16StartDefaultTaskPv:0000000000000000 $d
-     /tmp/cc8DVXT5.s:243    .text.HAL_TIM_PeriodElapsedCallback:0000000000000000 $t
-     /tmp/cc8DVXT5.s:250    .text.HAL_TIM_PeriodElapsedCallback:0000000000000000 HAL_TIM_PeriodElapsedCallback
-     /tmp/cc8DVXT5.s:287    .text.HAL_TIM_PeriodElapsedCallback:0000000000000014 $d
+     /tmp/cciGDgtG.s:243    .text.HAL_TIM_PeriodElapsedCallback:0000000000000000 $t
+     /tmp/cciGDgtG.s:250    .text.HAL_TIM_PeriodElapsedCallback:0000000000000000 HAL_TIM_PeriodElapsedCallback
+     /tmp/cciGDgtG.s:287    .text.HAL_TIM_PeriodElapsedCallback:0000000000000014 $d
 .ARM.extab.text.HAL_TIM_PeriodElapsedCallback:0000000000000000 $d
 .ARM.exidx.text.HAL_TIM_PeriodElapsedCallback:0000000000000000 $d
-     /tmp/cc8DVXT5.s:293    .text.Error_Handler:0000000000000000 $t
-     /tmp/cc8DVXT5.s:300    .text.Error_Handler:0000000000000000 Error_Handler
+     /tmp/cciGDgtG.s:293    .text.Error_Handler:0000000000000000 $t
+     /tmp/cciGDgtG.s:300    .text.Error_Handler:0000000000000000 Error_Handler
     .ARM.exidx.text.Error_Handler:0000000000000000 $d
-     /tmp/cc8DVXT5.s:334    .text._ZL12MX_TIM2_Initv:0000000000000000 $t
-     /tmp/cc8DVXT5.s:340    .text._ZL12MX_TIM2_Initv:0000000000000000 _ZL12MX_TIM2_Initv
-     /tmp/cc8DVXT5.s:504    .text._ZL12MX_TIM2_Initv:00000000000000a4 $d
+     /tmp/cciGDgtG.s:334    .text._ZL12MX_TIM2_Initv:0000000000000000 $t
+     /tmp/cciGDgtG.s:340    .text._ZL12MX_TIM2_Initv:0000000000000000 _ZL12MX_TIM2_Initv
+     /tmp/cciGDgtG.s:504    .text._ZL12MX_TIM2_Initv:00000000000000a4 $d
 .ARM.exidx.text._ZL12MX_TIM2_Initv:0000000000000000 $d
-     /tmp/cc8DVXT5.s:510    .text._Z18SystemClock_Configv:0000000000000000 $t
-     /tmp/cc8DVXT5.s:517    .text._Z18SystemClock_Configv:0000000000000000 _Z18SystemClock_Configv
-     /tmp/cc8DVXT5.s:691    .text._Z18SystemClock_Configv:00000000000000a8 $d
+     /tmp/cciGDgtG.s:510    .text._Z18SystemClock_Configv:0000000000000000 $t
+     /tmp/cciGDgtG.s:517    .text._Z18SystemClock_Configv:0000000000000000 _Z18SystemClock_Configv
+     /tmp/cciGDgtG.s:691    .text._Z18SystemClock_Configv:00000000000000a8 $d
 .ARM.exidx.text._Z18SystemClock_Configv:0000000000000000 $d
-     /tmp/cc8DVXT5.s:697    .text.main:0000000000000000 $t
-     /tmp/cc8DVXT5.s:704    .text.main:0000000000000000 main
-     /tmp/cc8DVXT5.s:867    .text.main:00000000000000b8 $d
+     /tmp/cciGDgtG.s:697    .text.main:0000000000000000 $t
+     /tmp/cciGDgtG.s:704    .text.main:0000000000000000 main
+     /tmp/cciGDgtG.s:867    .text.main:00000000000000b8 $d
              .ARM.extab.text.main:0000000000000000 $d
              .ARM.exidx.text.main:0000000000000000 $d
-     /tmp/cc8DVXT5.s:930    .rodata.str1.4:0000000000000000 $d
-     /tmp/cc8DVXT5.s:940    .bss.defaultTaskHandle:0000000000000000 defaultTaskHandle
-     /tmp/cc8DVXT5.s:947    .bss.htim2:0000000000000000 htim2
-     /tmp/cc8DVXT5.s:936    .bss.defaultTaskHandle:0000000000000000 $d
-     /tmp/cc8DVXT5.s:943    .bss.htim2:0000000000000000 $d
-     /tmp/cc8DVXT5.s:950    .rodata._ZL22defaultTask_attributes:0000000000000000 $d
-     /tmp/cc8DVXT5.s:954    .rodata._ZL22defaultTask_attributes:0000000000000000 _ZL22defaultTask_attributes
+     /tmp/cciGDgtG.s:930    .rodata.str1.4:0000000000000000 $d
+     /tmp/cciGDgtG.s:940    .bss.defaultTaskHandle:0000000000000000 defaultTaskHandle
+     /tmp/cciGDgtG.s:947    .bss.htim2:0000000000000000 htim2
+     /tmp/cciGDgtG.s:936    .bss.defaultTaskHandle:0000000000000000 $d
+     /tmp/cciGDgtG.s:943    .bss.htim2:0000000000000000 $d
+     /tmp/cciGDgtG.s:950    .rodata._ZL22defaultTask_attributes:0000000000000000 $d
+     /tmp/cciGDgtG.s:954    .rodata._ZL22defaultTask_attributes:0000000000000000 _ZL22defaultTask_attributes
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin
@@ -1888,14 +1888,14 @@ HAL_TIM_OC_ConfigChannel
 HAL_TIM_MspPostInit
 memset
 HAL_PWREx_ConfigSupply
-ARM GAS  /tmp/cc8DVXT5.s 			page 33
+ARM GAS  /tmp/cciGDgtG.s 			page 33
 
 
 HAL_RCC_OscConfig
 HAL_RCC_ClockConfig
 _Znwj
 _ZN8STM32LED3LEDC1EP12GPIO_TypeDeft
-_ZN18STM32_motorControl12motorControlC1EP12GPIO_TypeDeftP17TIM_HandleTypeDef
+_ZN19STM32_motor_control13motor_controlC1EP12GPIO_TypeDeftP17TIM_HandleTypeDef
 HAL_Init
 HAL_TIM_OC_Start
 osKernelInitialize
@@ -1905,5 +1905,5 @@ _ZdlPvj
 __cxa_end_cleanup
 _ZN8STM32LED4LED2E
 _ZN8STM32LED4LED3E
-_ZN18STM32_motorControl7motorC1E
+_ZN19STM32_motor_control7motorc1E
 __gxx_personality_v0
