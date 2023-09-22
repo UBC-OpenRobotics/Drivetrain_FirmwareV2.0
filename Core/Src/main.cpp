@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "LED.h"
+#include "drivetrain_ros_node.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -145,10 +146,30 @@ int main(void)
   /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+ 
+
+  DriveTrainControlInterface d;
+  u_int16_t rpmCmd[2];
+  bool dirCmd[2];
+
   while (1)
   {
     /* USER CODE END WHILE */
+    if (d.isUpdated())
+    {
+     d.getMotorCmd(rpmCmd, dirCmd);
+     if (rpmCmd[0] == 0 and rpmCmd[1] == 0){
+       disableMotors();
+        d.log("disabled motors");
+      } else{
+       enableMotors();
+       d.log("enabled motors");
+       driveMotors(rpmCmd, dirCmd);
+      }
+      d.log("motor cmd sent");
+    }
 
+    d.nh.spinOnce();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -327,9 +348,11 @@ static void MX_GPIO_Init(void)
 void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
+  // void setup() here
   /* Infinite loop */
   for(;;)
   {
+    //void loop() here
     // STM32LED:: LED1 -> toggle();
     // osDelay(5);
     // __HAL_TIM_SET_AUTORELOAD(&htim2, 1);
