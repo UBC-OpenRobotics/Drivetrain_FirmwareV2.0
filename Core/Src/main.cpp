@@ -141,6 +141,9 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_EVENTS */
   /* add events, ... */
+  STM32_motor_control::motorc1 -> calculate_timer_frequency(10);
+  STM32_motor_control::motorc1 -> adjust_timer_frequency();
+
   /* USER CODE END RTOS_EVENTS */
 
   /* Start scheduler */
@@ -236,7 +239,7 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 400;
+  htim2.Init.Prescaler = 100;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 1000;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -341,7 +344,20 @@ void StartDefaultTask(void *argument)
     // osDelay(5);
     // STM32LED:: LED3 -> toggle();
     // __HAL_TIM_SET_AUTORELOAD(&htim2, 1000);
-    osDelay(5);
+
+    /* Changes the speed after 3.5 seconds */
+    osDelay(3500);
+    STM32_motor_control::motorc1 -> calculate_timer_frequency(100);
+    STM32_motor_control::motorc1 -> adjust_timer_frequency();
+    osDelay(3500);
+    STM32_motor_control::motorc1 -> calculate_timer_frequency(300);
+    STM32_motor_control::motorc1 -> adjust_timer_frequency();
+    osDelay(3500);
+    STM32_motor_control::motorc1 -> calculate_timer_frequency(100);
+    STM32_motor_control::motorc1 -> adjust_timer_frequency();
+    osDelay(3500);
+    STM32_motor_control::motorc1 -> calculate_timer_frequency(10);
+    STM32_motor_control::motorc1 -> adjust_timer_frequency();
   }
   /* USER CODE END 5 */
 }
