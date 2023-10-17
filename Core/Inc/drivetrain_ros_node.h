@@ -1,5 +1,9 @@
+#pragma once //should add this to ensure if this file is included in other files, the proceeding includes in this one will only
+             //be added if theyre not already there -- Do
 #ifndef DRIVETRAIN_ROS_NODE_H
 #define DRIVETRAIN_ROS_NODE_H
+
+//I AM TESTINGNGNGNGNGNGNGN
 
 #include <math.h>
 #include <ros.h>
@@ -21,92 +25,22 @@ const float ANG_SPEED_LIMIT = 1.0; //rad/s
 //unit conversions
 const float RADS_TO_RPM = 9.54929658551;
 
-//actual function in cpp file
-//declarations in .h file
-
 /** \brief Software interface for control over rosserial*/
 class DriveTrainControlInterface
 {
 public:
-    ros::Publisher logger;
+    ros::Publisher logger; //field (variables), :: is an access operator
     ros::NodeHandle nh;
     ros::Subscriber<geometry_msgs::Twist, DriveTrainControlInterface> twistSubscriber;
-
-    DriveTrainControlInterface()
-    : twistSubscriber(CMD_VEL_TOPIC, &DriveTrainControlInterface::twistCmdCallback, this),
-        logger(LOG_PUB_TOPIC, &string_msg)
     
-    {  // Constructor
-        cmdUpdateFlag = false;
-        velocityCmd[0] = 0;
-        velocityCmd[1] = 0;
-        _rpmCmd[0] = 0;
-        _rpmCmd[1] = 0;
-        _dirCmd[0] = true;
-        _dirCmd[1] = true;
-
-        nh.initNode();
-        nh.subscribe(twistSubscriber);
-        nh.advertise(logger);
-        // ros::Publisher p("/esp32/log", &log);
-    }
-
-    void log(const char * msg){
-        string_msg.data = msg;
-        logger.publish(&string_msg);
-    }
-
-    void enforce_velocity_limits(){
-        velocityCmd[0] = constrain(velocityCmd[0], -1*LIN_SPEED_LIMIT, LIN_SPEED_LIMIT);
-        velocityCmd[1] = constrain(velocityCmd[1], -1*ANG_SPEED_LIMIT, ANG_SPEED_LIMIT);
-    }
-
-    /**
-     * \brief Calculates the desired angular velocity for each wheel based on the kinematic model for the drivetrain
-     * see https://en.wikipedia.org/wiki/Differential_wheeled_robot
-     * modifies input array
-     * \param float[] velocityCmd array, contains desired vecloity and angular velocity for drivetrain
-     * \param u_int16_t[] rpmCmd array, function will fill this array with target RPM values for each wheel
-     * \param bool[] dirCmd array, function will fill this array with target rotational direction for each wheel
-     */
-    static void calculateRobotKinematics(float velocityCmd[], u_int16_t rpmCmd[], bool dirCmd[])
-    {
-        float wR = (velocityCmd[0] + velocityCmd[1] * DRIVETRAIN_WIDTH/2)/WHEEL_RADIUS;
-        float wL = (velocityCmd[0] - velocityCmd[1] * DRIVETRAIN_WIDTH/2)/WHEEL_RADIUS;
-
-        dirCmd[0] = wR > 0;
-        dirCmd[1] = wL > 0;
-
-        rpmCmd[0] = (u_int16_t) abs(floor(wR*RADS_TO_RPM));
-        rpmCmd[1] = (u_int16_t) abs(floor(wL*RADS_TO_RPM));
-    }
-
-    /**
-     * \brief Checks if the velocity command has been updated since last getVelocityCmd call
-     * \return bool
-     */
-    bool isUpdated()
-    {
-        return cmdUpdateFlag;
-    }
-
-    /**
-     * \brief Gets the latest RPM and dir for each motor
-     * \param u_int16_t[] rpmCmd - array to be modified with new rpm values
-     * \param bool[] dirCmd - array to be modified with rot. direction values
-     * 
-     * rpmCmd[0] = RPM for right wheel
-     * rpmCmd[1] = RPM for left wheel
-     * 
-     * dirCmd[0] = rot. direction for right wheel (true = forward)
-     * dirCmd[1] = rot. direction for left wheel (true = forward)
-     */
-    void getMotorCmd(u_int16_t rpmCmd[], bool dirCmd[])
-    {
-        memcpy(rpmCmd, _rpmCmd, sizeof(_rpmCmd));
-        memcpy(dirCmd, _dirCmd, sizeof(_dirCmd));
-        cmdUpdateFlag = false;
-    }
+    // function headers for the stuff i moved over/////////////////////////////////////////////////////
+    void log(const char* msg); //method (function)
+    void enforce_velocity_limits();
+    static void calculateRobotKinematics(float velocityCmd[], u_int16_t rpmCmd[], bool dirCmd[]);
+    bool isUpdated();
+    void getMotorCmd(u_int16_t rpmCmd[], bool dirCmd[]);
+    DriveTrainControlInterface();
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 private:
     bool cmdUpdateFlag;
@@ -115,23 +49,10 @@ private:
     bool _dirCmd[2];
     std_msgs::String string_msg;
     char msg_buff[100];
-
-    /**
-     * \brief ROS subscriber callback function, to be called whenever a new message is received
-     * \param geometry_msgs::Twist message input for callback
-     */
-    void twistCmdCallback(const geometry_msgs::Twist &msg)
-    {
-        velocityCmd[0] = msg.linear.x; // in m/s
-        velocityCmd[1] = msg.angular.z; // in rad/s
-        enforce_velocity_limits();
-        calculateRobotKinematics(velocityCmd, _rpmCmd, _dirCmd);
-        cmdUpdateFlag = true;
-        log("twist velocity cmd received");
-        sprintf(msg_buff, "left rpm: %d, left fwd? %d\nright rpm: %d, right fwd? %d",
-         _rpmCmd[1], _dirCmd[1], _rpmCmd[0], _dirCmd[0]);
-         log(msg_buff);
-    }
+    
+    //function i moved over:///////////////////////////
+    void twistCmdCallback(const geometry_msgs::Twist &msg);
+    ///////////////////////////////////////////////
 };
 
 #endif

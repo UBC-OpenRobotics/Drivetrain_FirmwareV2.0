@@ -82,9 +82,8 @@ int main(void)
   STM32LED::LED2= new STM32LED::LED(GPIOE, GPIO_PIN_1);
   STM32LED::LED3= new STM32LED::LED(GPIOB, GPIO_PIN_14);
   /* USER CODE END 1 */
-
+  
   /* MCU Configuration--------------------------------------------------------*/
-
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
@@ -168,12 +167,110 @@ int main(void)
       }
       d.log("motor cmd sent");
     }
-
+ 
     d.nh.spinOnce();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }
+///////////////////////////////////////////////////////////////////////
+//HERE ARE THE FUNCTIONS I MOVED OVER -- DO
+///////////////////////////////////////////////////////////////////////
+
+void DriveTrainControlInterface::log(const char * msg){
+        string_msg.data = msg;
+        logger.publish(&string_msg);
+    }
+
+void DriveTrainControlInterface::enforce_velocity_limits(){
+        velocityCmd[0] = constrain(velocityCmd[0], -1*LIN_SPEED_LIMIT, LIN_SPEED_LIMIT);
+        velocityCmd[1] = constrain(velocityCmd[1], -1*ANG_SPEED_LIMIT, ANG_SPEED_LIMIT);
+    }
+
+/**
+ * \brief Calculates the desired angular velocity for each wheel based on the kinematic model for the drivetrain
+ * see https://en.wikipedia.org/wiki/Differential_wheeled_robot
+ * modifies input array
+ * \param float[] velocityCmd array, contains desired vecloity and angular velocity for drivetrain
+ * \param u_int16_t[] rpmCmd array, function will fill this array with target RPM values for each wheel
+ * \param bool[] dirCmd array, function will fill this array with target rotational direction for each wheel
+ */
+static void DriveTrainControlInterface::calculateRobotKinematics(float velocityCmd[], u_int16_t rpmCmd[], bool dirCmd[])
+{
+    float wR = (velocityCmd[0] + velocityCmd[1] * DRIVETRAIN_WIDTH/2)/WHEEL_RADIUS;
+    float wL = (velocityCmd[0] - velocityCmd[1] * DRIVETRAIN_WIDTH/2)/WHEEL_RADIUS;
+
+    dirCmd[0] = wR > 0;
+    dirCmd[1] = wL > 0;
+
+    rpmCmd[0] = (u_int16_t) abs(floor(wR*RADS_TO_RPM));
+    rpmCmd[1] = (u_int16_t) abs(floor(wL*RADS_TO_RPM));
+}
+
+/**
+ * \brief Checks if the velocity command has been updated since last getVelocityCmd call
+ * \return bool
+ */
+bool DriveTrainControlInterface::isUpdated()
+{
+    return cmdUpdateFlag;
+}
+
+/**
+ * \brief Gets the latest RPM and dir for each motor
+ * \param u_int16_t[] rpmCmd - array to be modified with new rpm values
+ * \param bool[] dirCmd - array to be modified with rot. direction values
+ * 
+ * rpmCmd[0] = RPM for right wheel
+ * rpmCmd[1] = RPM for left wheel
+ * 
+ * dirCmd[0] = rot. direction for right wheel (true = forward)
+ * dirCmd[1] = rot. direction for left wheel (true = forward)
+ */
+void DriveTrainControlInterface::getMotorCmd(u_int16_t rpmCmd[], bool dirCmd[])
+{
+    memcpy(rpmCmd, _rpmCmd, sizeof(_rpmCmd));
+    memcpy(dirCmd, _dirCmd, sizeof(_dirCmd));
+    cmdUpdateFlag = false;
+}
+
+/**
+ * \brief ROS subscriber callback function, to be called whenever a new message is received
+ * \param geometry_msgs::Twist message input for callback
+ */
+void DriveTrainControlInterface::twistCmdCallback(const geometry_msgs::Twist &msg)
+{
+    velocityCmd[0] = msg.linear.x; // in m/s
+    velocityCmd[1] = msg.angular.z; // in rad/s
+    enforce_velocity_limits();
+    calculateRobotKinematics(velocityCmd, _rpmCmd, _dirCmd);
+    cmdUpdateFlag = true;
+    log("twist velocity cmd received");
+    sprintf(msg_buff, "left rpm: %d, left fwd? %d\nright rpm: %d, right fwd? %d",
+        _rpmCmd[1], _dirCmd[1], _rpmCmd[0], _dirCmd[0]);
+        log(msg_buff);
+}
+
+DriveTrainControlInterface::DriveTrainControlInterface()
+: twistSubscriber(CMD_VEL_TOPIC, &DriveTrainControlInterface::twistCmdCallback, this),
+    logger(LOG_PUB_TOPIC, &string_msg)
+
+{  // Constructor
+    cmdUpdateFlag = false;
+    velocityCmd[0] = 0;
+    velocityCmd[1] = 0;
+    _rpmCmd[0] = 0;
+    _rpmCmd[1] = 0;
+    _dirCmd[0] = true;
+    _dirCmd[1] = true;
+
+    nh.initNode();
+    nh.subscribe(twistSubscriber);
+    nh.advertise(logger);
+    // ros::Publisher p("/esp32/log", &log);
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 /**
   * @brief System Clock Configuration
