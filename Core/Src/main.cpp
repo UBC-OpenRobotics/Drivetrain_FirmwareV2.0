@@ -85,7 +85,7 @@ int main(void)
   STM32LED::LED3= new STM32LED::LED(GPIOB, GPIO_PIN_14);
 
   /* motorControl object(s) */
-  STM32_motor_control::motorc1 = new STM32_motor_control::motor_control(GPIOA , GPIO_PIN_0 , &htim2);
+  STM32_motor_control::motor_controller_1 = new STM32_motor_control::stepper_motor_controller(GPIOA , GPIO_PIN_0 , &htim2);
 
   /* USER CODE END 1 */
 
@@ -141,8 +141,6 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_EVENTS */
   /* add events, ... */
-  STM32_motor_control::motorc1 -> calculate_timer_frequency(10);
-  STM32_motor_control::motorc1 -> adjust_timer_frequency();
 
   /* USER CODE END RTOS_EVENTS */
 
@@ -239,7 +237,7 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 100;
+  htim2.Init.Prescaler = 99;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 1000;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -334,30 +332,15 @@ static void MX_GPIO_Init(void)
 void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
-  /* Infinite loop */
+  /* Infinite loop */    
+  uint32_t motor_rpm = 100;
+  STM32_motor_control::motor_controller_1 -> set_stepper_rpm(motor_rpm);
   for(;;)
   {
     STM32LED:: LED1 -> toggle();
-    // osDelay(5);
-    // __HAL_TIM_SET_AUTORELOAD(&htim2, 1);
-    // STM32LED:: LED2 -> toggle();
-    // osDelay(5);
-    // STM32LED:: LED3 -> toggle();
-    // __HAL_TIM_SET_AUTORELOAD(&htim2, 1000);
-
-    /* Changes the speed after 3.5 seconds */
-    osDelay(3500);
-    STM32_motor_control::motorc1 -> calculate_timer_frequency(100);
-    STM32_motor_control::motorc1 -> adjust_timer_frequency();
-    osDelay(3500);
-    STM32_motor_control::motorc1 -> calculate_timer_frequency(300);
-    STM32_motor_control::motorc1 -> adjust_timer_frequency();
-    osDelay(3500);
-    STM32_motor_control::motorc1 -> calculate_timer_frequency(100);
-    STM32_motor_control::motorc1 -> adjust_timer_frequency();
-    osDelay(3500);
-    STM32_motor_control::motorc1 -> calculate_timer_frequency(10);
-    STM32_motor_control::motorc1 -> adjust_timer_frequency();
+    motor_rpm = motor_rpm > 1200 ? motor_rpm : motor_rpm + 100;
+    STM32_motor_control::motor_controller_1 -> set_stepper_rpm(motor_rpm);
+    osDelay(200);
   }
   /* USER CODE END 5 */
 }

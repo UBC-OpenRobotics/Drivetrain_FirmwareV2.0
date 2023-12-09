@@ -2,10 +2,10 @@
 
 namespace STM32_motor_control
 {   
-    motor_control* motorc1;
+    stepper_motor_controller* motor_controller_1;
 
     //Constructor 
-    motor_control::motor_control(GPIO_TypeDef* gpio_port, uint16_t gpio_pin, TIM_HandleTypeDef* htim_handle)
+    stepper_motor_controller::stepper_motor_controller(GPIO_TypeDef* gpio_port, uint16_t gpio_pin, TIM_HandleTypeDef* htim_handle)
     {
         this -> motorc_port = gpio_port;
         this -> motorc_pin = gpio_pin;
@@ -13,28 +13,28 @@ namespace STM32_motor_control
     }
 
 
-    void motor_control::timer_start()
+    void stepper_motor_controller::set_stepper_rpm(uint32_t motor_rpm)
     {
-        HAL_TIM_Base_Start(this -> htim_handle);
+        this -> calculate_timer_frequency(motor_rpm);
+        this -> set_timer_frequency();
     }
-
-    void motor_control::timer_stop()
-    {
-        HAL_TIM_Base_Stop(this -> htim_handle);
-    }
-
     
-    void motor_control::adjust_timer_frequency()
-    {
-        uint32_t timer_reload_count = this -> clk_freq / this -> timer_freq;
+    void stepper_motor_controller::set_timer_frequency()
+    {   
+
+        //find the timer prescalr using HAL
+        uint32_t timer_prescalar = (this -> htim_handle -> Instance -> PSC) + 1; 
+        uint32_t timer_reload_count = (this -> timer_input_clk_freq/timer_prescalar) / (this -> timer_output_freq);
         //Calcualte the reload value based on the frequency parameter.
         __HAL_TIM_SET_AUTORELOAD(this -> htim_handle, timer_reload_count);
     }
 
 
-    void motor_control::calculate_timer_frequency(uint16_t motor_rpm)
-    {
-        this -> timer_freq = motor_rpm*(this -> motor_steps) / (60);
+    void stepper_motor_controller::calculate_timer_frequency(uint32_t motor_rpm)
+    {  
+        //Calculate the timer output frequency based on the motor rpm and 
+        //the number of steps per revolution   
+        this -> timer_output_freq = motor_rpm * (this -> motor_steps) / (60);
     }
 
 }
